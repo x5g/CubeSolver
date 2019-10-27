@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+ <title> Cube Solver Help </title>
+ <meta name="robots" content="noindex, nofollow">
+ <link rel=icon href=mini_cube.png type=image/png>
+ <link rel="stylesheet" type="text/css" href="style.css">
+ <meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body><center>
+<b>Cube Solver Help</b>
+<br><br>
+<p>To use the solver press the Random button and after a scrambled cube 
+appears press Solve.
+After a minute or so the solve will complete and a green bar appears under the
+cube which is the media player control panel, press the Play button (right
+arrow) to see the solution.
+Subsequent solves will run much faster, more about that in the "Search Time"
+section below.</p>
+<br><br>
+<b> Entering Colors and Solving</b>
+<br><br>
+<p>To solve an actual scrambled cube press the Clear button and enter the
+colors by first clicking on a color in the palette (six squares above
+layout) then clicking on a square in the layout which changes it to the
+selected color.
+Press the Show button to update the cube on the right side of the screen 
+to see that it matches.
+<br><br>
+Press the Solve button after you have colored the entire layout.
+It will first verify that the cube is valid and if not it will give a message
+indicating what the problem is.  
+If you get an error, compare your cube to the one on the screen and find the
+square(s) that do not match and fix them, then press Solve again.
+Repeat until there are no more errors.
+<br><br>
+Once all the errors are fixed it will solve the cube and the green bar will
+appear, press the second button from the right to show the solution one move at
+a time.</p>
+<br><br>
+<b>Search Time</b>
+<br><br>
+<p>
+If a solution is more than 20 moves then a shorter one can be found by 
+increasing Search Time which is normally 5 seconds (by default).
+Search Time is just one part of the total processing time.
+Before the Solver can search it must first make several tables for moves &amp;
+symmetry operations in addition to making the large search arrays (dist).
+That takes a significant amount of time which can be seen in the log 
+where it shows "Init + Dist Time" which can be seen by pressing the Solve Log
+button after a solve completes.
+The total amount of time to solve a random cube varies depending on the 
+computing capability of the device you are running it on.
+<br><br>
+Only the first solve within a session incurs the Init &amp; Dist Time, 
+subsequent solves take only the amount of time specified in the Search Time
+box.
+However, if the page is closed then the next time the solver is used it
+will have to do the Init &amp; Dist steps again, likewise if the page is
+reloaded.
+<br><br>
+An improvement to the search is available with the "d" option (append to 
+search time as in 5d) which will generate the search arrays to depth 9.
+That takes longer initially (approx 2 min on first solve) but makes the
+searches more effective.
+The generate time can be eliminated by using dist files as described in the
+next section.
+<br><br>
+Note:<br>
+In Firefox, if Search Time is set to more than 10 seconds then the browser
+will pop-up a message every 10 seconds asking whether to stop the script or let
+it continue.
+This message can be eliminated by setting
+<a href="http://kb.mozillazine.org/Dom.max_script_run_time">dom.max_script_run_time</a>
+in <a href="http://kb.mozillazine.org/About:config">about:config</a>.</p>
+<br><br>
+<b>Using Dist Files</b>
+<br><br>
+<p>By saving the dist arrays to files they only have to be generated once,
+then the files can be loaded into the Solver each time it is run instead of
+generating them.
+The dist arrays can be saved to files <a href="make_dist_files.html">here</a>
+or they can be downloaded at these links: 
+<a target=_blank href="https://drive.google.com/file/d/1LXrK-9F0kXLZu-3NZF8bsyIU45J0P-rz/view?usp=sharing">Dist1</a>
+<a target=_blank href="https://drive.google.com/file/d/1i6dtWUcOtkDZzwtFOWuYRSqvAzrE3bWp/view?usp=sharing">Dist2</a>
+<a target=_blank href="https://drive.google.com/file/d/1osKQ_jSdjeGfpO4o4AuQOBXA5z-UyH_x/view?usp=sharing">DistP2</a>.
+To use the solver with dist files add parameter load_dist_files=1 to the URL as
+shown by this <a href="solve.html?load_dist_files=1">link</a>.
+For security reasons Javascript requires user interaction for reading/writing
+of local files so they will have to be selected each time the solver is run,
+press the [Load Dist Files] button and select them then click Open.
+After a few seconds a message will appear under the cube indicating that the
+files have been loaded.
+Prior to loading, the list of files needed by the solver can be seen by
+pressing Solve.
+<br><br>
+Better performance can be achieved by using more memory.
+Devices with 2 GB of RAM can add the very large search array Dist3 (418 MB)
+which can be downloaded
+<a target=_blank href="https://drive.google.com/file/d/1XWknRdQVV7H_sDHqDyzCGb4reYGRhKum/view?usp=sharing">here</a>.
+To use, add parameter use_dist3=1 to the solver URL and select the files
+as described above.</p>
+<br><br>
+<b>Searching For 20 Move Solutions</b>
+<br><br>
+<p>To stop the search based on solution length rather than search time 
+use the "s" option (append to search time as in 5s).
+With a sufficiently long search time the solver will stop at the first 
+solution of 20 moves or less but if search time is too low then that
+will take precedence and the search will be stopped before reaching the
+goal.
+In that case increase search time, or better yet, also use the "d" option.
+So for example, do 5d solve to generate the dist arrays to depth 9 (or load
+the dist files) then do 30s solve which will allow up to 30 seconds of
+searching to find a solution with 20 moves or less.
+The "s" option will remain in effect for subsequent solves, to switch
+back to the normal search (stop based on time only) append "t" to search
+time (as in 5t).
+<br><br>
+With the "s" option, there will be a large variance in the amount of time
+it takes to find a solution (with 20 moves or less) so the wait may be long
+in some cases.
+After the solve completes the amount of search time used is shown below the
+Solve Log button.</p>
+<br>
+<a href="JavaScript:window.close()">Close</a>
+<br><br>
+</center>
+</body>
+</html>
