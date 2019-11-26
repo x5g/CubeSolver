@@ -1,0 +1,1197 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Neucha|Patrick+Hand+SC" rel="stylesheet" />
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+    <link href="{% static 'static/css/main.ce70e69d.css' %}" rel="stylesheet" />
+    <link href="{% static 'static/css/main.ce70e69d1.css' %}" rel="stylesheet" />
+
+
+    <title>Cube Solver</title>
+    <meta name="robots" content="nofollow">
+    <link type="text/css" href="{% static 'css/style2.css' %}" rel="stylesheet" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/Cube.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/rch.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/rclib.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/solve.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/verify.js' %}"></script>
+
+
+    <link rel="stylesheet" href="{% static 'css/ystep.css' %}" />
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/setStep.js' %}"></script>
+
+ 
+
+    <script type="text/javascript" src="{% static 'js/jquery.qrcode.min.js' %}"></script>
+
+    <!-- Add fancyBox main JS and CSS files -->
+    <script type="text/javascript" src="{% static 'source/jquery.fancybox.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'source/jquery.fancybox.css' %}" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+
+
+    <script>
+        var facelets_arr = [];
+        var sbtn_bgcolor_active = "#aaaaaa";    // should match btn:active in style2.css
+        var sbtn_bgcolor_inactive = "#ffffff";  // should match btn background-color style2.css
+
+        var CUBE_HOME = "YYYYYYYYYGGGOOOBBBRRRGGGOOOBBBRRRGGGOOOBBBRRRWWWWWWWWW";
+        var CUBE_BLANK = "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL";
+
+        if (typeof (facelets) == 'undefined')
+            var facelets = CUBE_HOME;
+        else {
+            if (facelets.length > 54)
+                facelets = facelets.substr(0, 54);
+            if (facelets.length < 54)
+                facelets = (facelets + CUBE_BLANK).substr(0, 54);
+            facelets = facelets.toUpperCase();
+            var ftmp = facelets.split('');
+            for (var i = 0; i < 54; i++) {
+                var f = ftmp[i];
+                if ('WYORGB'.indexOf(f) == -1)
+                    ftmp[i] = 'L';
+            }
+            facelets = ftmp.join('');
+        }
+    </script>
+
+
+
+    <link href="{% static 'css/monokai_sublime.min.css' %}" rel="stylesheet" />
+
+
+    <script>
+        //搜狐短网址
+        //可以考虑调用https://www.nowapi.com/这里的api
+        //这里有短网址+还原
+        function sohoShortURL(url) {
+            $.ajax({
+                url: 'https://sohu.gg/api/',
+                type: 'get',
+                data: {
+                    url: url,
+                    key: 'RupEGXGoKZan',
+                    format: 'jsonp'
+                },
+                dataType: 'jsonp', //这里为jsonp类型
+                jsonp: 'callback', // get请求携带的参数名称，
+                jsonpCallback: 'callbackname', //自定义回调函数名称，可以不写Jqery有默认的函数名称
+                success: function (json) {
+                    //console.log(json.short);
+                    $("#solinput2").val(json.short);
+                    //return json.short;
+                },
+                error: function (json) {
+                    console.log(json.error);
+                }
+            });
+        }
+    </script>
+
+
+    <script type="text/javascript" src="{% static 'js/axios.min.js' %}"></script>
+
+</head>
+<body>
+
+        <noscript>
+            You need to enable JavaScript to run this app.
+        </noscript>
+
+        <div id="root1">
+            <div class="App1">
+                <div class="App1-container">
+                    <header class="App1-header">
+                        <img src="{% static 'static/media/logo.4bd204f81.svg' %}" class="App1-logo" alt="logo" />
+                    </header>
+                    <div class="App1-intro">
+                        <div class="App1-intro-text" style="width:100%">
+                            <p style="text-align:center">Do you have a confused Rubik's cube and need to solve it in a hurry?</p>
+                            <p style="text-align:center">Well, great news! Scan it here. Then, you can follow the Cube Solver to fix your cube!</p>
+                        </div>
+                    </div>
+                    <div class="Instructions1">
+                        <h1>0  Instructions</h1>
+                        <p>The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!</p>
+                        <p>Here we provide a video to introduce the capabilities of Cube Solver.</p>
+
+                        <!--视频插入在这里-->
+                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=76684072&cid=131158836&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        <br /><br />-->
+
+                        <p>In the aspect of Rubik's cube solution, we choose Two Phase Algorithm (also called Kociemba Algorithm). You can visit <a href="http://kociemba.org/cube.htm" style="color:white">here</a> to learn more about the solution details.</p><p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
+                        <h1>1  Scanning &amp; Algorithm Guide</h1>
+                        <p>Randomly select a face of the cube as the initial front face, and then perform the following scanning operations. Note that you should aim each one side of the cube at the camera instead of yourself. For example, in the guide cube, we choose the white face as the initial front face. (white face is on the back of yellow face)</p>
+
+                        <center>
+                            <table style="width: 80%;">
+                                <tr style="width: 100%">
+                                    <td style="width: 100%">
+                                        <h2>Step1. Scan initial front face (In this example, scan the white face). </h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep1" width="85" height="75" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step2. Turn the Rubik's cube 90 degrees clockwise, scan this face (In this example, scan the green face), and turn back to the initial front face after scanning.</h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep2" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step3. Turn the Rubik's cube 90 degrees counter clockwise, scan this face (In this example, scan the blue face), and turn back to the initial front face after scanning. </h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep3" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z'&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step4. Turn the Rubik's cube down 90 degrees, scan this face (In this example, scan the red face), and then turn back to the initial front face after scanning.</h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep4" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=X&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step5. Turn the Rubik's cube up 90 degrees, scan the face (In this example, scan the orange face), and then turn back to the initial front face after scanning.</h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep5" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=X'&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step6. Turn the Rubik's cube 180 degrees, scan this face (In this example, scan the yellow face).</h2>
+                                    </td>
+                                    <td style="margin: auto">
+                                        <iframe id="cubeStep6" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z2&edit=0"></iframe>
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+
+                        <h2>Tip: if the scanner is having problems detecting the colors, try tilting the cube to get a different lighting.</h2>
+                        <div style="box-sizing: border-box; position: relative; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; max-width: 750px;">
+                            <div style="margin-left: -15px; margin-right: -15px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal;">
+                                <div style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;"></div>
+                                <div style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;">
+                                    <img src="{% static 'static/media/tilt.f3a5d0f91.svg' %}" alt="tilt">
+                                </div>
+                                <div style="display: table; clear: both;">
+                                    <span style="display: none;">&nbsp;</span>
+                                </div>
+                            </div>
+                            <span style="display: table; clear: both;"></span>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="Instructions1">
+                        <h2>Here's how to follow standard Rubik's cube algorithm notation.</h2>
+                        <div style="box-sizing: border-box; position: relative; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; max-width: 750px;">
+                            <div style="margin-left: -15px; margin-right: -15px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal;">
+                                <div style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 16.6667%; max-width: 16.6667%; margin-left: 0%; right: auto; left: auto;"></div>
+                                <div class="right" style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;">
+                                    <p>U = Turn the up/top face clockwise</p>
+                                    <p>U' = Turn the up/top face counter-clockwise</p>
+                                    <p>U2 = Turn the up/top face clockwise, 2 times</p>
+                                </div>
+                                <div class="left" style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;">
+                                    <p>F = Front face</p>
+                                    <p>L = Left face</p>
+                                    <p>R = Right face</p>
+                                    <p>U = Up/top face</p>
+                                    <p>D = Down/bottom face</p>
+                                    <p>B = Back face</p>
+                                </div>
+                            </div>
+                            <span style="display: table; clear: both;"></span>
+                        </div>
+                    </div>
+                    <div class="Instructions1">
+                        <h1>2  Cube Solver Demo</h1>
+                        <p>After reading the above introduction, do you have any idea to try it yourself? Here we provide a demo, let's try to sovle a cube with cube solver!. If you don't have a solid cube that can be used to break up, it doesn't matter. You can try to click the button "Random". The cube on the right will be randomly scramble. Then click the button "Solve" and wait a moment, a solution progress bar will appear. Follow the progress bar to restore step by step, and you will fix your cube! Don't forget the cube on the right is 3D and rotatable, press and drag the left mouse button to try.</p><p>When you have a solid cube, you can follow the following process: Step 1, scan all sides of the cube in the order of scanning through webcam. Step 2, click the button "Draw" to map the six scanned faces to the Rubik's cube expansion map on the left, because the color of the scanning will be incorrect, you can correct it manually in this step. Step 3, click the button "Solve", and follow the progress bar to restore step by step, as mentioned before. We will verify your input before we solve the cube. If it is not solvable, we will give a prompt: please check your input.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="root"></div>
+        <script type="text/javascript" src="{% static 'static/js/main.e8816c68.js' %}"></script>
+
+
+        <div class=wrap>
+            <center>
+                <button class="btn svw1" onclick="show2()">Draw</button>
+
+                <style>
+                    input {
+                        height: 22px;
+                        width: 22px;
+                    }
+                </style>
+                <table>
+                    <tr>
+                        <td valign=top>
+                            <table border=0 style=line-height:0>
+                                <tr height=8></tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f0 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f1 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f2 type=button onclick=set_color(this)> </td>
+                                    <td colspan=2>
+                                    <td colspan=5 rowspan=3 align=center>
+                                        <table border=0>
+                                            <tr height=5> </tr>
+                                            <tr>
+                                                <td width=3></td>
+                                                <td> <input type=button id=R onclick=select_color(this) style="background-color:red;"> </td>
+                                                <td> <input type=button id=Y onclick=select_color(this) style="background-color:yellow;"> </td>
+                                                <td> <input type=button id=B onclick=select_color(this) style="background-color:blue;"> </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td> <input type=button id=O onclick=select_color(this) style="background-color:orange"> </td>
+                                                <td> <input type=button id=W onclick=select_color(this) style="background-color:white"> </td>
+                                                <td> <input type=button id=G onclick=select_color(this) style="background-color:green"> </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f3 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f4 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f5 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f6 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f7 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f8 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr height=10></tr>
+                                <tr>
+                                    <td> <input id=f9 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f10 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f11 type=button onclick=set_color(this)> </td>
+                                    <td width=12> </td>
+                                    <td> <input id=f12 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f13 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f14 type=button onclick=set_color(this)> </td>
+                                    <td width=12> </td>
+                                    <td> <input id=f15 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f16 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f17 type=button onclick=set_color(this)> </td>
+                                    <td width=12> </td>
+                                    <td> <input id=f18 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f19 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f20 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr>
+                                    <td> <input id=f21 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f22 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f23 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f24 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f25 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f26 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f27 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f28 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f29 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f30 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f31 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f32 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr>
+                                    <td> <input id=f33 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f34 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f35 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f36 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f37 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f38 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f39 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f40 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f41 type=button onclick=set_color(this)> </td>
+                                    <td> </td>
+                                    <td> <input id=f42 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f43 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f44 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr height=10></tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f45 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f46 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f47 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f48 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f49 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f50 type=button onclick=set_color(this)> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=4></td>
+                                    <td> <input id=f51 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f52 type=button onclick=set_color(this)> </td>
+                                    <td> <input id=f53 type=button onclick=set_color(this)> </td>
+                                </tr>
+                            </table>
+
+                            <table border=0>
+                                <tr height=14></tr>
+                                <tr>
+                                    <td> <button class="btn svw1" onclick="home()">Home</button> </td>
+                                    <td width=5></td>
+                                    <td> <button class="btn svw1" onclick="show()">Show</button> </td>
+                                    <td width=5></td>
+                                    <td> <button class="btn svw2" onclick="rand()">Random</button> </td>
+                                    <td width=5></td>
+                                    <td> <button id=sbtn class="btn svw1" onclick="solve()">Solve</button> </td>
+                                </tr>
+                                <tr height=10></tr>
+                            </table>
+                        </td>
+                        <td id=tdc valign=top>
+                            <div style=width:300px>
+                                <div id="mf" style="margin: 40px auto 80px;"></div>
+
+                                <div id="btns">
+                                    <input type="button" class="btn" value="U" id="u" />
+                                    <input type="button" class="btn" value="E" id="e'" />
+                                    <input type="button" class="btn" value="D" id="d" />
+                                    <input type="button" class="btn" value="L" id="l" />
+                                    <input type="button" class="btn" value="M" id="m'" />
+                                    <input type="button" class="btn" value="R" id="r" />
+                                    <input type="button" class="btn" value="F" id="f" />
+                                    <input type="button" class="btn" value="S" id="s" />
+                                    <input type="button" class="btn" value="B" id="b" />
+                                    <input type="button" class="btn" value="U'" id="u'" />
+                                    <input type="button" class="btn" value="E'" id="e" />
+                                    <input type="button" class="btn" value="D'" id="d'" />
+                                    <input type="button" class="btn" value="L'" id="l'" />
+                                    <input type="button" class="btn" value="M'" id="m" />
+                                    <input type="button" class="btn" value="R'" id="r'" />
+                                    <input type="button" class="btn" value="F'" id="f'" />
+                                    <input type="button" class="btn" value="S'" id="s'" />
+                                    <input type="button" class="btn" value="B'" id="b'" />
+
+
+                                    <input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" />
+                                </div>
+
+                                <script type="text/javascript">
+                                    var cube = new Cube('mf', { borderLength: 200 });
+
+                                    var aInt = document.getElementById('btns').getElementsByTagName('input');
+                                    for (var i = 0; i < aInt.length - 1; i++) {
+                                        aInt[i].onclick = function () {
+                                            cube.turn3(this.id);
+                                        }
+                                    }
+
+                                    function resetCubeLocation() {
+                                        cube.initL();
+                                    };
+                                    function executeAll() {
+                                        var value = $("#solinput").val();
+                                        cube.setOneTimeBatch(1);
+                                        cube.turn3s(value);
+                                        cube.setOneTimeBatch(200);
+                                    };
+                                    function setColorForCube() {
+                                        colorslist = [$("#f0").css("backgroundColor"), $("#f1").css("backgroundColor"), $("#f2").css("backgroundColor"), $("#f3").css("backgroundColor"), $("#f4").css("backgroundColor"), $("#f5").css("backgroundColor"), $("#f6").css("backgroundColor"), $("#f7").css("backgroundColor"), $("#f8").css("backgroundColor"),
+                                            $("#f9").css("backgroundColor"), $("#f10").css("backgroundColor"), $("#f11").css("backgroundColor"), $("#f12").css("backgroundColor"), $("#f13").css("backgroundColor"), $("#f14").css("backgroundColor"), $("#f15").css("backgroundColor"), $("#f16").css("backgroundColor"), $("#f17").css("backgroundColor"),
+                                            $("#f18").css("backgroundColor"), $("#f19").css("backgroundColor"), $("#f20").css("backgroundColor"), $("#f21").css("backgroundColor"), $("#f22").css("backgroundColor"), $("#f23").css("backgroundColor"), $("#f24").css("backgroundColor"), $("#f25").css("backgroundColor"), $("#f26").css("backgroundColor"),
+                                            $("#f27").css("backgroundColor"), $("#f28").css("backgroundColor"), $("#f29").css("backgroundColor"), $("#f30").css("backgroundColor"), $("#f31").css("backgroundColor"), $("#f32").css("backgroundColor"), $("#f33").css("backgroundColor"), $("#f34").css("backgroundColor"), $("#f35").css("backgroundColor"),
+                                            $("#f36").css("backgroundColor"), $("#f37").css("backgroundColor"), $("#f38").css("backgroundColor"), $("#f39").css("backgroundColor"), $("#f40").css("backgroundColor"), $("#f41").css("backgroundColor"), $("#f42").css("backgroundColor"), $("#f43").css("backgroundColor"), $("#f44").css("backgroundColor"),
+                                            $("#f45").css("backgroundColor"), $("#f46").css("backgroundColor"), $("#f47").css("backgroundColor"), $("#f48").css("backgroundColor"), $("#f49").css("backgroundColor"), $("#f50").css("backgroundColor"), $("#f51").css("backgroundColor"), $("#f52").css("backgroundColor"), $("#f53").css("backgroundColor")]
+
+                                        for (i = 0; i < colorslist.length; i++) {
+                                            if (colorslist[i] == "rgb(255, 0, 0)") {
+                                                colorslist[i] = "red";
+                                            }
+                                            else if (colorslist[i] == "rgb(255, 255, 0)") {
+                                                colorslist[i] = "yellow";
+                                            }
+                                            else if (colorslist[i] == "rgb(0, 0, 255)") {
+                                                colorslist[i] = "blue";
+                                            }
+                                            else if (colorslist[i] == "rgb(255, 165, 0)") {
+                                                colorslist[i] = "orange";
+                                            }
+                                            else if (colorslist[i] == "rgb(255, 255, 255)") {
+                                                colorslist[i] = "white";
+                                            }
+                                            else if (colorslist[i] == "rgb(0, 128, 0)") {
+                                                colorslist[i] = "green";
+                                            }
+                                        }
+
+                                        //    右边魔方的编码规律
+                                        //
+                                        //               00 01 02
+                                        //               03 04 05
+                                        //               06 07 08
+                                        //
+                                        //    18 21 24   36 37 38   33 30 27    47 46 45
+                                        //    19 22 25   39 40 41   34 31 28    50 49 48
+                                        //    20 23 26   42 43 44   35 32 29    53 52 51
+                                        //
+                                        //               15 16 17
+                                        //               12 13 14
+                                        //               09 10 11
+                                        //
+                                        //
+                                        //    左边魔方的编码规律
+                                        //
+                                        //               00 01 02
+                                        //               03 04 05
+                                        //               06 07 08
+                                        //
+                                        //     09 10 11  12 13 14   15 16 17    18 19 20
+                                        //     21 22 23  24 25 26   27 28 29    30 31 32
+                                        //     33 34 35  36 37 38   39 40 41    42 43 44
+                                        //
+                                        //               45 46 47
+                                        //               48 49 50
+                                        //               51 52 53
+
+                                        colorslistTop = [];
+                                        colorslistBottom = [];
+                                        colorslistLeft = [];
+                                        colorslistRight = [];
+                                        colorslistFront = [];
+                                        colorslistBack = [];
+                                        colorslistTop.push(colorslist[0]);
+                                        colorslistTop.push(colorslist[1]);
+                                        colorslistTop.push(colorslist[2]);
+                                        colorslistTop.push(colorslist[3]);
+                                        colorslistTop.push(colorslist[4]);
+                                        colorslistTop.push(colorslist[5]);
+                                        colorslistTop.push(colorslist[6]);
+                                        colorslistTop.push(colorslist[7]);
+                                        colorslistTop.push(colorslist[8]);
+
+                                        colorslistBottom.push(colorslist[51]);
+                                        colorslistBottom.push(colorslist[52]);
+                                        colorslistBottom.push(colorslist[53]);
+                                        colorslistBottom.push(colorslist[48]);
+                                        colorslistBottom.push(colorslist[49]);
+                                        colorslistBottom.push(colorslist[50]);
+                                        colorslistBottom.push(colorslist[45]);
+                                        colorslistBottom.push(colorslist[46]);
+                                        colorslistBottom.push(colorslist[47]);
+
+                                        colorslistLeft.push(colorslist[9]);
+                                        colorslistLeft.push(colorslist[21]);
+                                        colorslistLeft.push(colorslist[33]);
+                                        colorslistLeft.push(colorslist[10]);
+                                        colorslistLeft.push(colorslist[22]);
+                                        colorslistLeft.push(colorslist[34]);
+                                        colorslistLeft.push(colorslist[11]);
+                                        colorslistLeft.push(colorslist[23]);
+                                        colorslistLeft.push(colorslist[35]);
+
+                                        colorslistRight.push(colorslist[17]);
+                                        colorslistRight.push(colorslist[29]);
+                                        colorslistRight.push(colorslist[41]);
+                                        colorslistRight.push(colorslist[16]);
+                                        colorslistRight.push(colorslist[28]);
+                                        colorslistRight.push(colorslist[40]);
+                                        colorslistRight.push(colorslist[15]);
+                                        colorslistRight.push(colorslist[27]);
+                                        colorslistRight.push(colorslist[39]);
+
+                                        colorslistFront.push(colorslist[12]);
+                                        colorslistFront.push(colorslist[13]);
+                                        colorslistFront.push(colorslist[14]);
+                                        colorslistFront.push(colorslist[24]);
+                                        colorslistFront.push(colorslist[25]);
+                                        colorslistFront.push(colorslist[26]);
+                                        colorslistFront.push(colorslist[36]);
+                                        colorslistFront.push(colorslist[37]);
+                                        colorslistFront.push(colorslist[38]);
+
+                                        colorslistBack.push(colorslist[20]);
+                                        colorslistBack.push(colorslist[19]);
+                                        colorslistBack.push(colorslist[18]);
+                                        colorslistBack.push(colorslist[32]);
+                                        colorslistBack.push(colorslist[31]);
+                                        colorslistBack.push(colorslist[30]);
+                                        colorslistBack.push(colorslist[44]);
+                                        colorslistBack.push(colorslist[43]);
+                                        colorslistBack.push(colorslist[42]);
+
+                                        colors = [colorslistTop, colorslistBottom, colorslistLeft, colorslistRight, colorslistFront, colorslistBack];
+                                        cube.setColor(colors);
+                                    }
+
+                                </script>
+
+                                <div id="status" style="width:300px;color:white"></div>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+                <div id=back> </div>
+                <br />
+                <input type="text" style="width:400px" id="solinput" />　<input type="button" class="btn svw2" onclick="executeAll()" value="ExecuteAll" />
+                <input type="text" style="width:400px;display:none" id="solinput2" />　<input type="button" class="btn svw1" onclick="qrcode()" value="QR code" />
+                <div id="output" class="fancybox" style="display:none"></div>
+                <input type="text" style="width:400px;display:none" id="facelets_arr_input" />
+
+                <script>
+                function qrcode() {
+                    //$("#output").qrcode($("#solinput2").val());
+                    $("#output").empty();
+                    $('#output').qrcode({
+                        render: "canvas", //也可以替换为table
+                        width: 400,
+                        height: 400,
+                        text: $("#solinput2").val()
+                    });
+                    $('#output').click();
+                }
+                </script>
+                <br /><br />
+
+                <!-- 菜单及分页容器-->
+                <div class="stepCont stepCont3" id="div1">
+                    <!-- 菜单导航显示-->
+                    <div class='ystep-container ystep-lg ystep-blue' id="div2"></div>
+                </div>
+                <script>
+                    //去左空格;
+                    function ltrim(s) {
+                        return s.replace(/(^\s*)/g, "");
+                    }
+                    //去右空格;
+                    function rtrim(s) {
+                        return s.replace(/(\s*$)/g, "");
+                    }
+                    //去左右空格;
+                    function trim(s) {
+                        return s.replace(/(^\s*)|(\s*$)/g, "");
+                    }
+
+
+                    function setCubeStep(cube) {
+                        var value = $("#solinput").val();
+                        value = value.replace(/\s\s\s*/g, " ");
+                        value = ' ' + value;
+                        var steps = rtrim(value).split(' ');
+
+                        $("#div2").empty();
+                        $("#div3").remove();
+                        var step3 = new SetStep({
+                            content: '.stepCont3',
+                            clickAble: false
+                        }, steps, cube, facelets_arr);
+                    }
+
+                </script>
+
+                <script>
+                    update_layout();
+                    show_cube(1);
+
+                    function update_layout() {
+                        facelets_arr = facelets.split('');
+                        for (var i = 0; i < 54; i++) {
+                            document.getElementById('f' + i).style.backgroundColor = color_str(facelets_arr[i]);
+                        }
+                    }
+
+                    function select_color(f) {
+                        color = f.id;
+                    }
+
+                    function set_color(f) {
+                        if (typeof (color) != 'undefined') {
+                            facelets_arr = $("#facelets_arr_input").val().split('');
+
+                            facelets_arr[f.id.substr(1)] = color;
+                            f.style.backgroundColor = color_str(color);
+                        }
+                        show(); //这里添加了一行 涂色即show出来
+                        show3();
+                    }
+
+                    function show3() {  //将涂色魔方映射到扫描魔方
+                        $("#27").css("backgroundColor", $("#f0").css("backgroundColor"));
+                        $("#28").css("backgroundColor", $("#f1").css("backgroundColor"));
+                        $("#29").css("backgroundColor", $("#f2").css("backgroundColor"));
+                        $("#30").css("backgroundColor", $("#f3").css("backgroundColor"));
+                        $("#31").css("backgroundColor", $("#f4").css("backgroundColor"));
+                        $("#32").css("backgroundColor", $("#f5").css("backgroundColor"));
+                        $("#33").css("backgroundColor", $("#f6").css("backgroundColor"));
+                        $("#34").css("backgroundColor", $("#f7").css("backgroundColor"));
+                        $("#35").css("backgroundColor", $("#f8").css("backgroundColor"));
+
+                        $("#18").css("backgroundColor", $("#f9").css("backgroundColor"));
+                        $("#19").css("backgroundColor", $("#f10").css("backgroundColor"));
+                        $("#20").css("backgroundColor", $("#f11").css("backgroundColor"));
+                        $("#21").css("backgroundColor", $("#f21").css("backgroundColor"));
+                        $("#22").css("backgroundColor", $("#f22").css("backgroundColor"));
+                        $("#23").css("backgroundColor", $("#f23").css("backgroundColor"));
+                        $("#24").css("backgroundColor", $("#f33").css("backgroundColor"));
+                        $("#25").css("backgroundColor", $("#f34").css("backgroundColor"));
+                        $("#26").css("backgroundColor", $("#f35").css("backgroundColor"));
+
+                        $("#0").css("backgroundColor", $("#f12").css("backgroundColor"));
+                        $("#1").css("backgroundColor", $("#f13").css("backgroundColor"));
+                        $("#2").css("backgroundColor", $("#f14").css("backgroundColor"));
+                        $("#3").css("backgroundColor", $("#f24").css("backgroundColor"));
+                        $("#4").css("backgroundColor", $("#f25").css("backgroundColor"));
+                        $("#5").css("backgroundColor", $("#f26").css("backgroundColor"));
+                        $("#6").css("backgroundColor", $("#f36").css("backgroundColor"));
+                        $("#7").css("backgroundColor", $("#f37").css("backgroundColor"));
+                        $("#8").css("backgroundColor", $("#f38").css("backgroundColor"));
+
+                        $("#9").css("backgroundColor", $("#f15").css("backgroundColor"));
+                        $("#10").css("backgroundColor", $("#f16").css("backgroundColor"));
+                        $("#11").css("backgroundColor", $("#f17").css("backgroundColor"));
+                        $("#12").css("backgroundColor", $("#f27").css("backgroundColor"));
+                        $("#13").css("backgroundColor", $("#f28").css("backgroundColor"));
+                        $("#14").css("backgroundColor", $("#f29").css("backgroundColor"));
+                        $("#15").css("backgroundColor", $("#f39").css("backgroundColor"));
+                        $("#16").css("backgroundColor", $("#f40").css("backgroundColor"));
+                        $("#17").css("backgroundColor", $("#f41").css("backgroundColor"));
+
+                        $("#45").css("backgroundColor", $("#f18").css("backgroundColor"));
+                        $("#46").css("backgroundColor", $("#f19").css("backgroundColor"));
+                        $("#47").css("backgroundColor", $("#f20").css("backgroundColor"));
+                        $("#48").css("backgroundColor", $("#f30").css("backgroundColor"));
+                        $("#49").css("backgroundColor", $("#f31").css("backgroundColor"));
+                        $("#50").css("backgroundColor", $("#f32").css("backgroundColor"));
+                        $("#51").css("backgroundColor", $("#f42").css("backgroundColor"));
+                        $("#52").css("backgroundColor", $("#f43").css("backgroundColor"));
+                        $("#53").css("backgroundColor", $("#f44").css("backgroundColor"));
+
+                        $("#36").css("backgroundColor", $("#f45").css("backgroundColor"));
+                        $("#37").css("backgroundColor", $("#f46").css("backgroundColor"));
+                        $("#38").css("backgroundColor", $("#f47").css("backgroundColor"));
+                        $("#39").css("backgroundColor", $("#f48").css("backgroundColor"));
+                        $("#40").css("backgroundColor", $("#f49").css("backgroundColor"));
+                        $("#41").css("backgroundColor", $("#f50").css("backgroundColor"));
+                        $("#42").css("backgroundColor", $("#f51").css("backgroundColor"));
+                        $("#43").css("backgroundColor", $("#f52").css("backgroundColor"));
+                        $("#44").css("backgroundColor", $("#f53").css("backgroundColor"));
+
+                    }
+
+
+                    function show2() {  // 将扫描魔方映射到涂色魔方
+                        //    扫描魔方的编码规律
+                        //
+                        //               TOP
+                        //               27 28 29
+                        //               30 31 32
+                        //               33 34 35
+                        //
+                        //    LEFT       FRONT      RIGHT       BACK
+                        //    09 10 11   00 01 02   18 19 20    45 46 47
+                        //    12 13 14   03 04 05   21 22 23    48 49 50
+                        //    15 16 17   06 07 08   24 25 26    51 52 53
+                        //
+                        //               BOTTOM
+                        //               36 37 38
+                        //               39 40 41
+                        //               42 43 44
+                        //
+                        //    左边魔方的编码规律
+                        //
+                        //               00 01 02
+                        //               03 04 05
+                        //               06 07 08
+                        //
+                        //     09 10 11  12 13 14   15 16 17    18 19 20
+                        //     21 22 23  24 25 26   27 28 29    30 31 32
+                        //     33 34 35  36 37 38   39 40 41    42 43 44
+                        //
+                        //               45 46 47
+                        //               48 49 50
+                        //               51 52 53
+                        //
+
+                        $("#f0").css("backgroundColor", $("#27").css("backgroundColor"));
+                        $("#f1").css("backgroundColor", $("#28").css("backgroundColor"));
+                        $("#f2").css("backgroundColor", $("#29").css("backgroundColor"));
+                        $("#f3").css("backgroundColor", $("#30").css("backgroundColor"));
+                        $("#f4").css("backgroundColor", $("#31").css("backgroundColor"));
+                        $("#f5").css("backgroundColor", $("#32").css("backgroundColor"));
+                        $("#f6").css("backgroundColor", $("#33").css("backgroundColor"));
+                        $("#f7").css("backgroundColor", $("#34").css("backgroundColor"));
+                        $("#f8").css("backgroundColor", $("#35").css("backgroundColor"));
+
+                        $("#f9").css("backgroundColor", $("#18").css("backgroundColor"));
+                        $("#f10").css("backgroundColor", $("#19").css("backgroundColor"));
+                        $("#f11").css("backgroundColor", $("#20").css("backgroundColor"));
+                        $("#f21").css("backgroundColor", $("#21").css("backgroundColor"));
+                        $("#f22").css("backgroundColor", $("#22").css("backgroundColor"));
+                        $("#f23").css("backgroundColor", $("#23").css("backgroundColor"));
+                        $("#f33").css("backgroundColor", $("#24").css("backgroundColor"));
+                        $("#f34").css("backgroundColor", $("#25").css("backgroundColor"));
+                        $("#f35").css("backgroundColor", $("#26").css("backgroundColor"));
+
+                        $("#f12").css("backgroundColor", $("#0").css("backgroundColor"));
+                        $("#f13").css("backgroundColor", $("#1").css("backgroundColor"));
+                        $("#f14").css("backgroundColor", $("#2").css("backgroundColor"));
+                        $("#f24").css("backgroundColor", $("#3").css("backgroundColor"));
+                        $("#f25").css("backgroundColor", $("#4").css("backgroundColor"));
+                        $("#f26").css("backgroundColor", $("#5").css("backgroundColor"));
+                        $("#f36").css("backgroundColor", $("#6").css("backgroundColor"));
+                        $("#f37").css("backgroundColor", $("#7").css("backgroundColor"));
+                        $("#f38").css("backgroundColor", $("#8").css("backgroundColor"));
+
+                        $("#f15").css("backgroundColor", $("#9").css("backgroundColor"));
+                        $("#f16").css("backgroundColor", $("#10").css("backgroundColor"));
+                        $("#f17").css("backgroundColor", $("#11").css("backgroundColor"));
+                        $("#f27").css("backgroundColor", $("#12").css("backgroundColor"));
+                        $("#f28").css("backgroundColor", $("#13").css("backgroundColor"));
+                        $("#f29").css("backgroundColor", $("#14").css("backgroundColor"));
+                        $("#f39").css("backgroundColor", $("#15").css("backgroundColor"));
+                        $("#f40").css("backgroundColor", $("#16").css("backgroundColor"));
+                        $("#f41").css("backgroundColor", $("#17").css("backgroundColor"));
+
+                        $("#f18").css("backgroundColor", $("#45").css("backgroundColor"));
+                        $("#f19").css("backgroundColor", $("#46").css("backgroundColor"));
+                        $("#f20").css("backgroundColor", $("#47").css("backgroundColor"));
+                        $("#f30").css("backgroundColor", $("#48").css("backgroundColor"));
+                        $("#f31").css("backgroundColor", $("#49").css("backgroundColor"));
+                        $("#f32").css("backgroundColor", $("#50").css("backgroundColor"));
+                        $("#f42").css("backgroundColor", $("#51").css("backgroundColor"));
+                        $("#f43").css("backgroundColor", $("#52").css("backgroundColor"));
+                        $("#f44").css("backgroundColor", $("#53").css("backgroundColor"));
+
+                        $("#f45").css("backgroundColor", $("#36").css("backgroundColor"));
+                        $("#f46").css("backgroundColor", $("#37").css("backgroundColor"));
+                        $("#f47").css("backgroundColor", $("#38").css("backgroundColor"));
+                        $("#f48").css("backgroundColor", $("#39").css("backgroundColor"));
+                        $("#f49").css("backgroundColor", $("#40").css("backgroundColor"));
+                        $("#f50").css("backgroundColor", $("#41").css("backgroundColor"));
+                        $("#f51").css("backgroundColor", $("#42").css("backgroundColor"));
+                        $("#f52").css("backgroundColor", $("#43").css("backgroundColor"));
+                        $("#f53").css("backgroundColor", $("#44").css("backgroundColor"));
+
+                        show(); // 这里加了一行 Draw后直接Show到右边的魔方上
+                    }
+
+
+
+
+                    function show() {
+                        if (facelets != facelets_arr.join('')) {
+                            facelets = facelets_arr.join('');
+
+                            $("#facelets_arr_input").val(facelets);
+
+                            show_cube(1);
+                        }
+                        else {
+                            if (msgtxt.length > 0)
+                                clear_status();
+                        }
+
+                        setColorForCube();
+                    }
+
+                    function home() {
+                        facelets = CUBE_HOME;
+                        if (CUBE_HOME != facelets_arr.join('')) {
+                            update_layout();
+                            show_cube(1);
+                        }
+                        else {
+                            if (msgtxt.length > 0)
+                                clear_status();
+                        }
+                        setColorForCube();
+                        $("#solinput").val("");
+                        //$("#div1").empty();
+                        $("#div2").empty();
+                        $("#div3").empty();
+                    }
+
+                    function rand() {
+                        facelets = randcube();
+
+                        $("#facelets_arr_input").val(facelets);
+
+                        update_layout();
+                        show_cube(1);
+                        setColorForCube();
+                    }
+
+
+                    function solve() {
+
+                        facelets_arr = [];
+                        for (var i = 0; i < 54; i++) {
+                            //arr.push(document.querySelector("#f" + i.toString()).style.backgroundColor.toString());
+                            var rgb = $("#f" + i.toString()).css("backgroundColor");
+                            //alert("rgb = "+ rgb);
+                            if (rgb == "red" || rgb == "rgb(255, 0, 0)") {
+                                facelets_arr.push("R");
+                            }
+                            else if (rgb == "yellow" || rgb == "rgb(255, 255, 0)") {
+                                facelets_arr.push("Y");
+                            }
+                            else if (rgb == "blue" || rgb == "rgb(0, 0, 255)") {
+                                facelets_arr.push("B");
+                            }
+                            else if (rgb == "orange" || rgb == "rgb(255, 165, 0)") {
+                                facelets_arr.push("O");
+                            }
+                            else if (rgb == "white" || rgb == "rgb(255, 255, 255)") {
+                                facelets_arr.push("W");
+                            }
+                            else if (rgb == "green" || rgb == "rgb(0, 128, 0)") {
+                                facelets_arr.push("G");
+                            }
+                            //alert("facelets_arr = " + facelets_arr);
+                        }
+
+                        sbtn_active();
+
+                        msgtxt.length = 0;
+                        document.getElementById('status').style.textAlign = 'left';
+                        if (facelets != facelets_arr.join('')) {
+                            facelets = facelets_arr.join('');
+                            show_cube(1);
+                        }
+                        var verify = verify_main(facelets); //verify_main是验证魔方的函数 在verify.js里
+                        if (verify == 0) {
+                            //进行sovle
+
+                            // 算法魔方编码规律
+                            //
+                            //             |************|
+                            //             |*U1**U2**U3*|
+                            //             |************|
+                            //             |*U4**U5**U6*|
+                            //             |************|
+                            //             |*U7**U8**U9*|
+                            //             |************|
+                            // ************|************|************|************
+                            // *L1**L2**L3*|*F1**F2**F3*|*R1**R2**R3*|*B1**B2**B3*
+                            // ************|************|************|************
+                            // *L4**L5**L6*|*F4**F5**F6*|*R4**R5**R6*|*B4**B5**B6*
+                            // ************|************|************|************
+                            // *L7**L8**L9*|*F7**F8**F9*|*R7**R8**R9*|*B7**B8**B9*
+                            // ************|************|************|************
+                            //             |************|
+                            //             |*D1**D2**D3*|
+                            //             |************|
+                            //             |*D4**D5**D6*|
+                            //             |************|
+                            //             |*D7**D8**D9*|
+                            //             |************|
+                            // 输入顺序 U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, 
+                            //         F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9,
+                            //         L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9
+
+
+                            // 注意这个算法不是靠颜色来判断 是面的代码
+                            // 首先先获取每个面的中心色块对应的颜色
+                            var U5 = facelets_arr[4], R5 = facelets_arr[28], F5 = facelets_arr[25], D5 = facelets_arr[49], L5 = facelets_arr[22], B5 = facelets_arr[31];
+                            // 然后根据面色进行转换
+                            var solve_facelets_arr_temp = [];
+                            for (var i = 0; i < facelets_arr.length; i++) {
+                                switch (facelets_arr[i]) {
+                                    case U5:
+                                        solve_facelets_arr_temp.push('U');
+                                        break;
+                                    case L5:
+                                        solve_facelets_arr_temp.push('L');
+                                        break;
+                                    case F5:
+                                        solve_facelets_arr_temp.push('F');
+                                        break;
+                                    case R5:
+                                        solve_facelets_arr_temp.push('R');
+                                        break;
+                                    case B5:
+                                        solve_facelets_arr_temp.push('B');
+                                        break;
+                                    case D5:
+                                        solve_facelets_arr_temp.push('D');
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            // 然后按照算法魔方的输入顺序重排solve_facelets_arr_temp
+                            // 左边魔方编码规律                                         算法魔方编码规律
+                            //
+                            //               00 01 02                                                 00 01 02
+                            //               03 04 05                                                 03 04 05
+                            //               06 07 08                                                 06 07 08
+                            //
+                            //     09 10 11  12 13 14   15 16 17    18 19 20                36 37 38  18 19 20  09 10 11  45 46 47
+                            //     21 22 23  24 25 26   27 28 29    30 31 32                39 40 41  21 22 23  12 13 14  48 49 50
+                            //     33 34 35  36 37 38   39 40 41    42 43 44                42 43 44  24 25 26  15 16 17  51 52 53
+                            //
+                            //               45 46 47                                                 27 28 29
+                            //               48 49 50                                                 30 31 32
+                            //               51 52 53                                                 33 34 35  
+                            var solve_facelets_arr = [];
+                            solve_facelets_arr.push(solve_facelets_arr_temp[0]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[1]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[2]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[3]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[4]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[5]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[6]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[7]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[8]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[15]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[16]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[17]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[27]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[28]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[29]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[39]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[40]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[41]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[12]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[13]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[14]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[24]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[25]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[26]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[36]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[37]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[38]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[45]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[46]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[47]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[48]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[49]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[50]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[51]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[52]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[53]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[9]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[10]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[11]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[21]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[22]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[23]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[33]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[34]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[35]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[18]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[19]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[20]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[30]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[31]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[32]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[42]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[43]);
+                            solve_facelets_arr.push(solve_facelets_arr_temp[44]);
+
+                            // 调用解法api
+                            var state = solve_facelets_arr.join('');
+                            $.get("solver", {
+                                    'state': state
+                                },
+                                function(data){    //data.move为还原
+                                sol = data.move.replace(/^\s+|\s+$/g,"").replace(/\s+/g, " ");
+
+                                //以下为show_solution()部分
+                                var af = cvt_to_anim(facelets);
+                                $("#solinput").val(sol);
+
+                                setCubeStep(cube);//设置进度条
+
+                                sol = sol.replace(/\s*/g, "");
+                                sol = sol.replace(/\'/g, "%27");
+                                //长网址写法
+                                // document.getElementById("solinput2").value = "https://czx.ac.cn/cube?move=" + sol + "&facelets=" + af + "&edit=0&speed=14&fonttype=0&bgcolor=38383D&butbgcolor=00ff00&repeat=0&textsize=20&buttonheight=25&slidercolor=0000FF&sliderbgcolor=E0E0E0&snap=1";
+                                //短网址写法
+                                sohoShortURL("https://czx.ac.cn/cube?move=" + sol + "&facelets=" + af + "&edit=0&speed=14&fonttype=0&bgcolor=38383D&butbgcolor=00ff00&repeat=0&textsize=20&buttonheight=25&slidercolor=0000FF&sliderbgcolor=E0E0E0&snap=1");
+                            });
+
+
+                        }
+                        else {
+                            document.getElementById('status').innerHTML = msgtxt.join('');
+                        }
+                        sbtn_inactive();
+                    }
+
+
+                    function show_cube(n) {
+                        if (n)
+                            clear_status();
+                    }
+
+                    function clear_status() {
+                        document.getElementById('status').innerHTML = '';
+                        msgtxt.length = 0;
+                    }
+
+                    function cvt_to_anim(c) {
+                        var ca = new Array(54);
+
+                        var to_anim = [
+                            6, 7, 8, 3, 4, 5, 0, 1, 2, 45, 48, 51, 46, 49, 52, 47, 50, 53, 12, 24,
+                            36, 13, 25, 37, 14, 26, 38, 18, 30, 42, 19, 31, 43, 20, 32, 44, 11,
+                            10, 9, 23, 22, 21, 35, 34, 33, 15, 27, 39, 16, 28, 40, 17, 29, 41];
+
+                        for (var i = 0; i < 54; i++)
+                            ca[i] = c[to_anim[i]];
+
+                        return (ca.join(''));
+                    }
+
+                    function randcube() {
+                        var cs = [];
+
+                        init_conv();
+                        copy(untwc, "021", 3, 0);  // for make_cubestr
+
+                        for (var i = 0; i < 20; i++) {
+                            var ep = Math.floor(Math.random() * 479001600);
+                            var et = Math.floor(Math.random() * 2048);
+                            var cp = Math.floor(Math.random() * 40320);
+                            var ct = Math.floor(Math.random() * 2187);
+
+                            int_to_perm(cp, cps, 8);
+                            int_to_perm(ep, eps, 12);
+                            int_to_strp(ct, cts, 7, 3);
+                            int_to_strp(et, ets, 11, 2);
+
+                            if (parity(eps, 12) == parity(cps, 8))
+                                break;
+                        }
+                        make_cubestr();
+                        assign_centers_6c();
+                        colorize(cs);
+                        return (cs.join(''));
+                    }
+
+                    function colorize(cs) {
+                        for (var i = 0; i < 54; i++)
+                            if (cubestr[i] == 0) cs[i] = 'B';
+                            else if (cubestr[i] == 1) cs[i] = 'Y';
+                            else if (cubestr[i] == 2) cs[i] = 'R';
+                            else if (cubestr[i] == 3) cs[i] = 'G';
+                            else if (cubestr[i] == 4) cs[i] = 'W';
+                            else if (cubestr[i] == 5) cs[i] = 'O';
+                    }
+
+                    function sbtn_active() {
+                        document.getElementById('sbtn').style.backgroundColor = sbtn_bgcolor_active;
+                    }
+                    function sbtn_inactive() {
+                        document.getElementById('sbtn').style.backgroundColor = sbtn_bgcolor_inactive;
+                    }
+                </script>
+            </center>
+        </div>
+
+    
+    <div class="App1">
+        <div class="App1-container">
+            <div class="Instructions1">
+                <h1>3  Problems & Solutions</h1>
+                <h2>3.1  Color Recognition</h2>
+                <p>One of the biggest challenges in this project is color recognition. Figuring out what color a pixel is showing on your monitor is easy, because your computer has a digital model of it. But it's a little more tricky to read the input from a webcam to figure out what color is on a shiny sticker on a plastic cube. Every room has different lighting, stickers show glare if your monitor's brightness is too high, and so on. The best we can do is guess what color a sticker is. Of course, we can try to make our guesses really good.</p>
+                <p>We wrote code to find the mean HSV and modal RGB from each sticker. We eyeballed the HSV and RGB values and found some thresholds that worked 95% of the time in 95% of lightings. Of course, we included a GUI to manually modify the colors on each cell of the cube. A 3D 'mirror' of the cube is shown on the same screen as the webcam's view. The colors on this mirror represent what will be stored internally, so the user can notice if it doesn't match up with the physical cube.</p>
+                <img style="width:50%" src="{% static 'static/media/carbon-5.png' %}" alt="codehsv" />
+                <h2>3.2  Check Rubik's Cube</h2>
+                <p>One thing we can be sure of is that the Rubik's cube of unchecked input is not necessarily solved. In order to avoid user's wrong input, we need to design an algorithm that can check whether the input is solvable. Make up the color sequence facelets of the small pieces of each face of the Rubik's cube, check it with function verify main(), it encodes 54 pieces of Rubik's cube, mainly including checking the center color block of each face, the color block on the corner and the color block on the edge. The complete code is in verify.js and rclib.js. The main codes are as follows:</p>
+                <img style="width:70%" src="{% static 'static/media/carbon-6.png' %}" alt="codeverify" />
+                <h2>3.3  API of Two Phase Algorithm</h2>
+                <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
+                <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
+                <p>The names of the facelet positions of the cube in the Two Phase Algorithm:</p>
+                <img style="width:30%" src="{% static 'static/media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
+                <p>A cube definition string "UBL..." means for example: In position U1 we have the U-color, in position U2 we have the B-color, in position U3 we have the L color etc. according to the order U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9, L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9 of the enum constants.</p>
+                <p>The API code to call the solve Rubik's cube algorithm in this HTML file is:</p>
+                <img style="width:50%" src="{% static 'static/media/carbon-12.png' %}" alt="codeapi" /><br /><br />
+                <p>And we provide the API interface of the solution. (1) Request address: https://czx.ac.cn/solver. (2) Request method: get. Input parameter: state. (3) Return format is JSON, where "move" is the solution sequence of Rubik's cube. Here is an example:</p>
+                <h3 style="font-family:'Neucha';color:#D4D0AB">get: https://czx.ac.cn/solver?state=LFBDUULLFULUFRRBLLUFRLFDLRRDBDBDBDBDBRFFLDRUBRUUUBRFDF<br />return: {"move": "L2 B2 U2 L2 D2 L2 R' D R' D2 L' F D2 U2 R' D2 R' D' F'"}</h3>
+            </div>
+
+            <div class="Instructions1">
+                <h1>4  The test of Cube Solver</h1>
+                <h2>4.1  Test</h2>
+                <h2>4.2  Compare Cube Sovler and DeepCubeA</h2>
+                <p>The detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+            </div>
+
+            <div class="Instructions1">
+                <h1>5  Disadvantage & Expectation</h1>
+                <h2>5.1  Disadvantage</h2>
+                <p>What we now know is that if the progress bar is clicked too fast, it will fail to restore. This is because Cube.js has a certain delay when it is restored. If the interval is shorter than this delay, this failure will happen.</p>
+                <h2>5.2  Expectation</h2>
+                <p>In the scanning input stage, some filtering rules can be added to help guess the sticker color. For example, Hiden Markov Model (HMM) is a good choice.</p>
+                <h1>6  Thanks</h1><br />
+                <table style="width:100%">
+                    <tr style="width:100%">
+                        <td style="width: 10%"></td>
+                        <td style="width: 80%">
+                            <p>hkociemba, author of our solving Rubik's cube algorithm file <a href="https://github.com/hkociemba/rubikscube-twophasesolver" style="color:white">RubiksCube-TwophaseSovler</a>.</p>
+                            <p>petr-lee, author of our scanning Rubik's cube module file <a href="https://github.com/petr-lee/RubikScan" style="color:white">RubikScan</a>.</p>
+                            <p>mfeather1, author of our drawing Rubik's cube module file <a href="https://github.com/mfeather1/3ColorCube" style="color:white">3ColorCube</a>.</p>
+                            <p>kmh0228, author of our showing Rubik's cube module file <a href="https://github.com/kmh0228/kmh0228.github.com/tree/master/study/Cube" style="color: white">Cube.js</a>.</p>
+                            <p>iyangyuan, author of our solving Rubik's cube process bar module file <a href="https://github.com/iyangyuan/ystep" style="color: white">ystep</a>.</p>
+                            <p>carbon-app, author of our highlight codes pictures file <a href="https://github.com/carbon-app/carbon" style="color: white">carbon</a>.</p>
+                            <p>Forest Agostinelli, Stephen McAleer, Alexander Shmakov, Pierre Baldi, thank you for opening the source code of the algorithm <a href="https://codeocean.com/capsule/5723040/tree/v1" style="color:white">DeepCubeA</a>.</p>
+                            <p>Peng Qiancheng, Qi Bing, thank you for your help in analyzing algorithm DeepCubeA.</p>
+                            <p>Alibaba Cloud Computing, our server supplier, thank you for your low price server.</p>
+                            <p>Professor Luo Tiejian, thank you for your idea.</p>
+                        </td>
+                        <td style="width: 10%"></td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                <br />
+                <p>To be continue...</p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="Footer1">
+                <p>Made by GZY, CZX, WW</p>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+    </div>
+<a href="https://github.com/x5g/Cube-Solver"><img style="position:absolute;top:0;left:0;border:0" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+</body>
+</html>
