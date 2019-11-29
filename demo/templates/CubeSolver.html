@@ -137,9 +137,9 @@
                             <source src="{% static 'static/media/CubeSolverIntroductionsVideo.mp4' %}" type="video/mp4" />
                         </video>-->
                         <!-- 本地视频 无加速版-->
-                        <video width="800" height="600" controls="controls">
+                        <!--<video width="800" height="600" controls="controls">
                             <source src="{% static 'static/media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
-                        </video>
+                        </video>-->
 
                         <p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
                         <h1>1  Scanning &amp; Algorithm Guide</h1>
@@ -1163,7 +1163,7 @@
             <div class="Instructions1">
                 <h1>4  The test of Cube Solver</h1>
                 <h2>4.1  Automated Test</h2>
-                <p>We provide an automatic test scheme demo: save the rotation sequence in the input file test.txt, and run the test file autoTest.py for testing. You can click <a href="autoTest" style="color:white">here</a> to get the demo content of test.txt and the code of autoTest.py, and here is a test video to see the test process and effect.</p>
+                <p>We provide an automatic test scheme demo: save the rotation sequence in the input file input.txt, and run the test file automatedTest.py for testing. You can find automatedTest.py and a demo of input.txt from the "test" folder in our GitHub. Here is a test video to see the test process and effect.</p>
 
                 <!--自动化测试视频插入在这里-->
                 <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77255460&cid=132146743&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
@@ -1174,6 +1174,9 @@
                 </video>-->
 
                 <h2>4.2  Compare Cube Solver and DeepCubeA</h2>
+                <p>We compare the Cube Solver with DeepCubeA in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results shows the average length of the solution obtained by Cube Solver is 19.802, and it obtained by DeepCubeA is 24.934, as showed in the figure, it can be observed that Cube Solver is better than DeepCubeA. Similarly, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py and result.xls from the "test" folder in our GitHub.</p>
+                <img style="width: 90%" src="{% static 'static/media/myplot.png' %}" alt="CompareResult" /><br /><br />
+                <p>Here is an input demo test video and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
 
                 <!--自动化对比测试视频插入在这里-->
                 <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77399680&cid=132403477&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
@@ -1183,7 +1186,6 @@
                     <source src="{% static 'static/media/CompareCubeSovlerandDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
-                <p>The detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
             </div>
 
             <div class="Instructions1">
