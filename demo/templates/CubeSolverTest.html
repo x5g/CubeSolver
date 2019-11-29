@@ -397,11 +397,11 @@ function solveCube() {
                                 <tr>
                                     <td> <button class="btn svw1" onclick="home()">Home</button> </td>
                                     <td width=5></td>
-                                    <td> <button class="btn svw1" onclick="show()">Show</button> </td>
-                                    <td width=5></td>
-                                    <td> <button class="btn svw2" onclick="rand()">Random</button> </td>
+                                    <td> <button class="btn svw1" onclick="rand()">Random</button> </td>
                                     <td width=5></td>
                                     <td> <button id=sbtn class="btn svw1" onclick="solve()">Solve</button> </td>
+                                    <td width="5"></td>
+                                    <td> <input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" /></td>
                                 </tr>
                                 <tr height=10></tr>
                             </table>
@@ -410,39 +410,8 @@ function solveCube() {
                             <div style=width:300px>
                                 <div id="mf" style="margin: 40px auto 80px;"></div>
 
-                                <div id="btns">
-                                    <input type="button" class="btn" value="U" id="u" />
-                                    <input type="button" class="btn" value="E" id="e'" />
-                                    <input type="button" class="btn" value="D" id="d" />
-                                    <input type="button" class="btn" value="L" id="l" />
-                                    <input type="button" class="btn" value="M" id="m'" />
-                                    <input type="button" class="btn" value="R" id="r" />
-                                    <input type="button" class="btn" value="F" id="f" />
-                                    <input type="button" class="btn" value="S" id="s" />
-                                    <input type="button" class="btn" value="B" id="b" />
-                                    <input type="button" class="btn" value="U'" id="u'" />
-                                    <input type="button" class="btn" value="E'" id="e" />
-                                    <input type="button" class="btn" value="D'" id="d'" />
-                                    <input type="button" class="btn" value="L'" id="l'" />
-                                    <input type="button" class="btn" value="M'" id="m" />
-                                    <input type="button" class="btn" value="R'" id="r'" />
-                                    <input type="button" class="btn" value="F'" id="f'" />
-                                    <input type="button" class="btn" value="S'" id="s'" />
-                                    <input type="button" class="btn" value="B'" id="b'" />
-
-
-                                    <input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" />
-                                </div>
-
                                 <script type="text/javascript">
                                     var cube = new Cube('mf', { borderLength: 200 });
-
-                                    var aInt = document.getElementById('btns').getElementsByTagName('input');
-                                    for (var i = 0; i < aInt.length - 1; i++) {
-                                        aInt[i].onclick = function () {
-                                            cube.turn3(this.id);
-                                        }
-                                    }
 
                                     function resetCubeLocation() {
                                         cube.initL();
@@ -598,9 +567,9 @@ function solveCube() {
                 </table>
                 <div id=back> </div>
                 <br />
-                <font color="white">input: </font><input type="text" style="width:400px" id="solinput" />　<input type="button" class="btn svw2" onclick="executeAll()" value="Rotation" />
+                <font color="white">input: </font><input type="text" style="width:400px" id="solinput" />　<input id="Rotation" type="button" class="btn svw2" onclick="executeAll()" value="Rotation" />
                 <input type="text" style="width:400px;display:none" id="solinput2" />　<input style="display: none" type="button" class="btn svw1" onclick="qrcode()" value="QR code" />　
-                <font color="white">output: </font><input type="text" readonly="readonly" style="width:400px;" id="soloutput" />　<input type="button" class="btn svw2" onclick="executeAll2()" value="ExecuteAll" />
+                <font color="white">output: </font><input type="text" readonly="readonly" style="width:400px;" id="soloutput" />　<input id="ExecuteAll" type="button" class="btn svw2" onclick="executeAll2()" value="ExecuteAll" />
                 <div id="output" class="fancybox" style="display:none"></div>
                 <input type="text" style="width:400px;display:none" id="facelets_arr_input" />
 
@@ -864,6 +833,7 @@ function solveCube() {
 
                     function home() {
                         facelets = CUBE_HOME;
+                        update_layout();
                         if (CUBE_HOME != facelets_arr.join('')) {
                             update_layout();
                             show_cube(1);
@@ -880,7 +850,7 @@ function solveCube() {
                         $("#div3").empty();
                     }
 
-                    function rand() {
+                    /*function rand() {
                         facelets = randcube();
 
                         $("#facelets_arr_input").val(facelets);
@@ -888,6 +858,23 @@ function solveCube() {
                         update_layout();
                         show_cube(1);
                         setColorForCube();
+                    }*/
+
+                    function rand(){
+                        var movelist = ["U", "U'", "U2", "D", "D'", "D2", "L", "L'", "L2", "R", "R'", "R2", "F", "F'", "F2", "B", "B'", "B2"]
+                        var randmove = [];
+                        for(i = 0; i < 20 ; i++){
+                            randmove.push(movelist[Math.floor((Math.random() * movelist.length))]);
+                        }
+                        var randmoveinput = "";
+                        for(i = 0; i < randmove.length; i++){
+                            randmoveinput += randmove[i];
+                            if(i != randmove.length - 1){
+                                randmoveinput += " ";
+                            }
+                        }
+                        $("#solinput").val(randmoveinput);
+                        $("#Rotation").click();
                     }
 
 

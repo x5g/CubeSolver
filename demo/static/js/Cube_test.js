@@ -446,8 +446,7 @@ Cube.prototype.reSetColorByTurnEnd=function(coor,num,dir){
 		}
 	this.setColor(this.colors);
 
-
-		    //    右边魔方的编码规律
+	//    右边魔方的编码规律
     //
     //               00 01 02
     //               03 04 05
