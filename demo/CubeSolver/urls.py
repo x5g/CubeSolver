@@ -21,7 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'(?i)^cubesolver$', views.cube_solver_index),
     re_path(r'(?i)^cubesolvertest$', views.cube_solver_test_index),
-    re_path(r'(?i)^autotest$', views.cube_solver_autotest_index),
     re_path(r'(?i)^cube$', views.cube_index),
     path('solver', views.solver)
 ]

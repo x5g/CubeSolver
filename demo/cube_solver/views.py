@@ -10,9 +10,6 @@ def cube_solver_index(request):
 def cube_solver_test_index(request):
     return render(request, 'CubeSolverTest.html')
 
-def cube_solver_autotest_index(request):
-    return render(request, 'autoTest.html')
-
 def cube_index(request):
     return render(request, 'cube.html')
 
