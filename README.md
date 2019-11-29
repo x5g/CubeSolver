@@ -3,7 +3,7 @@
 ## Instructions
 The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!
 
-Here we provide a [video](http://player.bilibili.com/player.html?aid=76684072&cid=131158836&page=1) to introduce the capabilities of Cube Solver. 
+Here we provide a [video](https://www.bilibili.com/video/av76684072?zw) to introduce the capabilities of Cube Solver. 
 
 In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: 
 
