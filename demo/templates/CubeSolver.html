@@ -1,4 +1,4 @@
-﻿{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,11 +129,25 @@
                         <p>The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!</p>
                         <p>Here we provide a video to introduce the capabilities of Cube Solver.</p>
 
-                        <!--视频插入在这里-->
+                        <!--临时加个标签-->
+                        <a style="color:white" href="https://www.bilibili.com/video/av76684072?zw">CubeSolverIntroductionsVideo</a><br /><br />
+                        <!--介绍视频插入在这里-->
+                        <!--bilibili加速版-->
                         <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=76684072&cid=131158836&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                         <br /><br />-->
+                        <!--bilibili无加速版-->
+                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77442108&cid=132459941&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        <br /><br />-->
+                        <!--本地视频 加速版-->
+                        <!--<video width="800" height="500" controls="controls">
+                            <source src="{% static 'static/media/CubeSolverIntroductionsVideo.mp4' %}" type="video/mp4" />
+                        </video><br /><br />-->
+                        <!-- 本地视频 无加速版-->
+                        <!--<video width="800" height="500" controls="controls">
+                            <source src="{% static 'static/media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
+                        </video><br /><br />-->
 
-                        <p>In the aspect of Rubik's cube solution, we choose Two Phase Algorithm (also called Kociemba Algorithm). You can visit <a href="http://kociemba.org/cube.htm" style="color:white">here</a> to learn more about the solution details.</p><p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
+                        <p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
                         <h1>1  Scanning &amp; Algorithm Guide</h1>
                         <p>Randomly select a face of the cube as the initial front face, and then perform the following scanning operations. Note that you should aim each one side of the cube at the camera instead of yourself. For example, in the guide cube, we choose the white face as the initial front face. (white face is on the back of yellow face)</p>
 
@@ -366,13 +380,20 @@
                             <table border=0>
                                 <tr height=14></tr>
                                 <tr>
-                                    <td> <button class="btn svw1" onclick="home()">Home</button> </td>
+                                    <!--<td> <button class="btn svw1" onclick="home()">Home</button> </td>
                                     <td width=5></td>
                                     <td> <button class="btn svw1" onclick="show()">Show</button> </td>
                                     <td width=5></td>
                                     <td> <button class="btn svw2" onclick="rand()">Random</button> </td>
                                     <td width=5></td>
+                                    <td> <button id=sbtn class="btn svw1" onclick="solve()">Solve</button> </td>-->
+                                    <td> <button class="btn svw1" onclick="home()">Home</button> </td>
+                                    <td width=5></td>
+                                    <td> <button class="btn svw1" onclick="rand()">Random</button> </td>
+                                    <td width=5></td>
                                     <td> <button id=sbtn class="btn svw1" onclick="solve()">Solve</button> </td>
+                                    <td width="5"></td>
+                                    <td> <input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" /></td>
                                 </tr>
                                 <tr height=10></tr>
                             </table>
@@ -381,28 +402,28 @@
                             <div style=width:300px>
                                 <div id="mf" style="margin: 40px auto 80px;"></div>
 
-                                <div id="btns">
+                                <div id="btns" style="width: 330px">
                                     <input type="button" class="btn" value="U" id="u" />
-                                    <input type="button" class="btn" value="E" id="e'" />
+                                    <!--<input type="button" class="btn" value="E" id="e'" />-->
                                     <input type="button" class="btn" value="D" id="d" />
                                     <input type="button" class="btn" value="L" id="l" />
-                                    <input type="button" class="btn" value="M" id="m'" />
+                                    <!--<input type="button" class="btn" value="M" id="m'" />-->
                                     <input type="button" class="btn" value="R" id="r" />
                                     <input type="button" class="btn" value="F" id="f" />
-                                    <input type="button" class="btn" value="S" id="s" />
+                                    <!--<input type="button" class="btn" value="S" id="s" />-->
                                     <input type="button" class="btn" value="B" id="b" />
                                     <input type="button" class="btn" value="U'" id="u'" />
-                                    <input type="button" class="btn" value="E'" id="e" />
+                                    <!--<input type="button" class="btn" value="E'" id="e" />-->
                                     <input type="button" class="btn" value="D'" id="d'" />
                                     <input type="button" class="btn" value="L'" id="l'" />
-                                    <input type="button" class="btn" value="M'" id="m" />
+                                    <!--<input type="button" class="btn" value="M'" id="m" />-->
                                     <input type="button" class="btn" value="R'" id="r'" />
                                     <input type="button" class="btn" value="F'" id="f'" />
-                                    <input type="button" class="btn" value="S'" id="s'" />
+                                    <!--<input type="button" class="btn" value="S'" id="s'" />-->
                                     <input type="button" class="btn" value="B'" id="b'" />
 
 
-                                    <input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" />
+                                    <!--<input type="button" class="btn svw1" onclick="resetCubeLocation()" value="Relocate" />-->
                                 </div>
 
                                 <script type="text/javascript">
@@ -563,7 +584,7 @@
                 </table>
                 <div id=back> </div>
                 <br />
-                <input type="text" style="width:400px" id="solinput" />　<input type="button" class="btn svw2" onclick="executeAll()" value="ExecuteAll" />
+                <input type="text" style="width:400px" id="solinput" />　<input id="ExecuteAll" type="button" class="btn svw2" onclick="executeAll()" value="ExecuteAll" />
                 <input type="text" style="width:400px;display:none" id="solinput2" />　<input type="button" class="btn svw1" onclick="qrcode()" value="QR code" />
                 <div id="output" class="fancybox" style="display:none"></div>
                 <input type="text" style="width:400px;display:none" id="facelets_arr_input" />
@@ -1103,11 +1124,11 @@
                     function colorize(cs) {
                         for (var i = 0; i < 54; i++)
                             if (cubestr[i] == 0) cs[i] = 'B';
-                            else if (cubestr[i] == 1) cs[i] = 'Y';
-                            else if (cubestr[i] == 2) cs[i] = 'R';
+                            else if (cubestr[i] == 1) cs[i] = 'O';
+                            else if (cubestr[i] == 2) cs[i] = 'Y';
                             else if (cubestr[i] == 3) cs[i] = 'G';
-                            else if (cubestr[i] == 4) cs[i] = 'W';
-                            else if (cubestr[i] == 5) cs[i] = 'O';
+                            else if (cubestr[i] == 4) cs[i] = 'R';
+                            else if (cubestr[i] == 5) cs[i] = 'W';
                     }
 
                     function sbtn_active() {
@@ -1135,6 +1156,7 @@
                 <h2>3.3  API of Two Phase Algorithm</h2>
                 <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
                 <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
+                <p>In the aspect of Rubik's cube solution, we choose Two Phase Algorithm (also called Kociemba Algorithm). You can visit <a href="http://kociemba.org/cube.htm" style="color:white">here</a> to learn more about the solution details.</p>
                 <p>The names of the facelet positions of the cube in the Two Phase Algorithm:</p>
                 <img style="width:30%" src="{% static 'static/media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
                 <p>A cube definition string "UBL..." means for example: In position U1 we have the U-color, in position U2 we have the B-color, in position U3 we have the L color etc. according to the order U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9, L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9 of the enum constants.</p>
@@ -1146,9 +1168,34 @@
 
             <div class="Instructions1">
                 <h1>4  The test of Cube Solver</h1>
-                <h2>4.1  Test</h2>
-                <h2>4.2  Compare Cube Sovler and DeepCubeA</h2>
-                <p>The detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+                <h2>4.1  Automated Test</h2>
+                <p>We provide an automatic test scheme demo: save the rotation sequence in the input file input.txt, and run the test file automatedTest.py for testing. You can find automatedTest.py and a demo of input.txt from the "test" folder in our GitHub. Here is a test video to see the test process and effect.</p>
+
+                <!--临时加个标签-->
+                <a style="color:white" href="https://www.bilibili.com/video/av77255460?zw">CubeSolverAutomatedTestVideo</a>
+                <!--自动化测试视频插入在这里-->
+                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77255460&cid=132146743&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <br /><br />-->
+                <!--本地视频-->
+                <!--<video width="800" height="450" controls="controls">
+                    <source src="{% static 'static/media/CubeSolverAutomatedTestVideo.mp4' %}" type="video/mp4" />
+                </video>-->
+
+                <h2>4.2  Compare Cube Solver and DeepCubeA</h2>
+                <p>We compare the Cube Solver with DeepCubeA in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results shows the average length of the solution obtained by Cube Solver is 19.802, and it obtained by DeepCubeA is 24.934, as showed in the figure, it can be observed that Cube Solver is better than DeepCubeA. Similarly, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub.</p>
+                <img style="width: 90%" src="{% static 'static/media/myplot.png' %}" alt="CompareResult" /><br /><br />
+                <p>Here is an input demo test video and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+
+                <!--临时加个标签-->
+                <a style="color:white" href="https://www.bilibili.com/video/av77399680?zw">CompareCubeSovlerandDeepCubeAAutomatedTestVideo</a>
+                <!--自动化对比测试视频插入在这里-->
+                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77399680&cid=132403477&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <br /><br />-->
+                <!--本地视频-->
+                <!--<video width="800" height="450" controls="controls">
+                    <source src="{% static 'static/media/CompareCubeSovlerAndDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
+                </video>-->
+
             </div>
 
             <div class="Instructions1">
@@ -1169,7 +1216,7 @@
                             <p>iyangyuan, author of our solving Rubik's cube process bar module file <a href="https://github.com/iyangyuan/ystep" style="color: white">ystep</a>.</p>
                             <p>carbon-app, author of our highlight codes pictures file <a href="https://github.com/carbon-app/carbon" style="color: white">carbon</a>.</p>
                             <p>Forest Agostinelli, Stephen McAleer, Alexander Shmakov, Pierre Baldi, thank you for opening the source code of the algorithm <a href="https://codeocean.com/capsule/5723040/tree/v1" style="color:white">DeepCubeA</a>.</p>
-                            <p>Peng Qiancheng, Qi Bing, thank you for your help in analyzing algorithm DeepCubeA.</p>
+                            <p>Peng Qiancheng, Qi Bing, Duan Xu, thank you for your help in analyzing algorithm DeepCubeA.</p>
                             <p>Alibaba Cloud Computing, our server supplier, thank you for your low price server.</p>
                             <p>Professor Luo Tiejian, thank you for your idea.</p>
                         </td>
