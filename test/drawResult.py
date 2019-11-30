@@ -24,19 +24,24 @@ ave_cube = ave_cube/1000
 print(ave_cube)
 print(ave_deep)
 
-# Draw line chart
+# Draw the result
 x=[]
 for i in range (1000): # Abscissa assignment
     x.append((i+1))
-pl.figure(figsize=[20,5],dpi= 400)
-pl.plot(x, y_cube, 'r', label='CubeSolver')
-pl.plot(x, y_deep, 'g', label='DeepCubeA')
+plt.figure(figsize=[20,5],dpi= 400)
 
+# Broken line diagram
+#plt.plot(x, y_cube, 'r', label='CubeSolver')
+#plt.plot(x, y_deep, 'g', label='DeepCubeA')
 
-pl.title('Comparision of CubeSolver and DeepCubeA')
-pl.xlabel('Time')
-pl.ylabel('Step Number')
-pl.xlim(0,1000)
-pl.ylim(15,40)
-pl.legend()
-pl.show()
+# Scatter diagram
+plt.scatter(x, y_cube, marker = 'x',color = 'red', s = 15 ,label = 'CubeSolver')
+plt.scatter(x, y_deep, marker = 'o', color = 'green', s = 15, label = 'DeepCubeA')
+
+plt.title('Comparision of CubeSolver and DeepCubeA')
+plt.xlabel('Time')
+plt.ylabel('Step Number')
+plt.xlim(0,1000)
+plt.ylim(15,40)
+plt.legend()
+plt.show()
