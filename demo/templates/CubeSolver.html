@@ -129,17 +129,23 @@
                         <p>The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!</p>
                         <p>Here we provide a video to introduce the capabilities of Cube Solver.</p>
 
+                        <!--临时加个标签-->
+                        <a style="color:white" href="https://www.bilibili.com/video/av77761128/">CubeSolverIntroductionsVideo</a><br /><br />
                         <!--介绍视频插入在这里-->
-                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=76684072&cid=131158836&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        <!--bilibili加速版-->
+                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77761128&cid=133031269&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        <br /><br />-->
+                        <!--bilibili无加速版-->
+                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77772638&cid=133033482&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                         <br /><br />-->
                         <!--本地视频 加速版-->
-                        <!--<video width="800" height="600" controls="controls">
+                        <!--<video width="800" height="500" controls="controls">
                             <source src="{% static 'static/media/CubeSolverIntroductionsVideo.mp4' %}" type="video/mp4" />
-                        </video>-->
+                        </video><br /><br />-->
                         <!-- 本地视频 无加速版-->
-                        <!--<video width="800" height="600" controls="controls">
+                        <!--<video width="800" height="500" controls="controls">
                             <source src="{% static 'static/media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
-                        </video>-->
+                        </video><br /><br />-->
 
                         <p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
                         <h1>1  Scanning &amp; Algorithm Guide</h1>
@@ -841,8 +847,8 @@
 
                     function home() {
                         facelets = CUBE_HOME;
+                        update_layout();
                         if (CUBE_HOME != facelets_arr.join('')) {
-                            update_layout();
                             show_cube(1);
                         }
                         else {
@@ -1165,25 +1171,79 @@
                 <h2>4.1  Automated Test</h2>
                 <p>We provide an automatic test scheme demo: save the rotation sequence in the input file input.txt, and run the test file automatedTest.py for testing. You can find automatedTest.py and a demo of input.txt from the "test" folder in our GitHub. Here is a test video to see the test process and effect.</p>
 
+                <!--临时加个标签-->
+                <a style="color:white" href="https://www.bilibili.com/video/av77760268/">CubeSolverAutomatedTestVideo</a>
                 <!--自动化测试视频插入在这里-->
-                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77255460&cid=132146743&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760268&cid=133030912&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                 <br /><br />-->
                 <!--本地视频-->
-                <!--<video width="800" height="600" controls="controls">
+                <!--<video width="800" height="450" controls="controls">
                     <source src="{% static 'static/media/CubeSolverAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
-                <h2>4.2  Compare Cube Solver and DeepCubeA</h2>
-                <p>We compare the Cube Solver with DeepCubeA in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results shows the average length of the solution obtained by Cube Solver is 19.802, and it obtained by DeepCubeA is 24.934, as showed in the figure, it can be observed that Cube Solver is better than DeepCubeA. Similarly, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py and result.xls from the "test" folder in our GitHub.</p>
-                <img style="width: 90%" src="{% static 'static/media/myplot.png' %}" alt="CompareResult" /><br /><br />
-                <p>Here is an input demo test video and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+                <h2>4.2  Compare Cube Solver with other algorithms for solving Rubik's cube</h2>
+                <p>We compare the Cube Solver with other algorithms for solving Rubik's cube (including Cube Solver with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in one table and two figures. The curve in Figure 1 is the comparison of seven algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1.</p>
+                <p>It should be pointed out that the first parameter of CubeSolver is the expected number of steps, and the second parameter is the limit time. Obviously, CubeSolver can explore more solution states when the time limit is larger. And, whether it is CubeSolver(18,5) or CubeSolver(20,2), the actual steps are less than other algorithms in most cases. Considering the effect of user experience, we choose CubeSolver(20,2) as our Rubik's cube solution algorithm.</p>
+                <p>In particular, we provide the comparison method and py file of CubeSolver(20,2) and DeepCubeA, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub.</p>
 
+                <img style="width: 90%" src="{% static 'static/media/myplot0.png' %}" alt="CompareResult" /><br /><br />
+                <img style="width: 90%" src="{% static 'static/media/myplot1.png' %}" alt="CompareResult" /><br /><br />
+
+                <center>
+                    <table border="1">
+                        <tr>
+                            <td colspan="7" style="text-align: center">Comparision of CubeSolver(18,5), CubeSolver(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; width: 16%"></td>
+                            <td style="text-align: center; width: 14%">CubeSolver(18,5)</td>
+                            <td style="text-align: center; width: 14%">CubeSolver(20,2)</td>
+                            <td style="text-align: center; width: 14%">DeepCubeA</td>
+                            <td style="text-align: center; width: 14%">LayerFirst</td>
+                            <td style="text-align: center; width: 14%">CFOP</td>
+                            <td style="text-align: center; width: 14%">Kociemba</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; width: 16%">Average step number</td>
+                            <td style="text-align: center; width: 14%">18.597</td>
+                            <td style="text-align: center; width: 14%">19.802</td>
+                            <td style="text-align: center; width: 14%">24.934</td>
+                            <td style="text-align: center; width: 14%">127.684</td>
+                            <td style="text-align: center; width: 14%">59.635</td>
+                            <td style="text-align: center; width: 14%">20.792</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; width: 16%">Minimum step number</td>
+                            <td style="text-align: center; width: 14%">15</td>
+                            <td style="text-align: center; width: 14%">17</td>
+                            <td style="text-align: center; width: 14%">16</td>
+                            <td style="text-align: center; width: 14%">80</td>
+                            <td style="text-align: center; width: 14%">38</td>
+                            <td style="text-align: center; width: 14%">17</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; width: 16%">Maximum step number</td>
+                            <td style="text-align: center; width: 14%">20</td>
+                            <td style="text-align: center; width: 14%">21</td>
+                            <td style="text-align: center; width: 14%">40</td>
+                            <td style="text-align: center; width: 14%">169</td>
+                            <td style="text-align: center; width: 14%">93</td>
+                            <td style="text-align: center; width: 14%">23</td>
+                        </tr>
+                    </table>
+                </center>
+                <br />
+                <p>Here is a demo test video about comparing CubeSolver(20,2) with DeepCubeA, and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+
+
+                <!--临时加个标签-->
+                <a style="color:white" href="https://www.bilibili.com/video/av77760383/">CompareCubeSovlerandDeepCubeAAutomatedTestVideo</a>
                 <!--自动化对比测试视频插入在这里-->
-                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77399680&cid=132403477&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760383&cid=133031093&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                 <br /><br />-->
                 <!--本地视频-->
-                <!--<video width="800" height="600" controls="controls">
-                    <source src="{% static 'static/media/CompareCubeSovlerandDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
+                <!--<video width="800" height="450" controls="controls">
+                    <source src="{% static 'static/media/CompareCubeSovlerAndDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
             </div>

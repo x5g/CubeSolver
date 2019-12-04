@@ -7,7 +7,7 @@ from time import sleep
 file=open("input.txt",mode="r",encoding="utf-8") # open test file
 
 chrome_driver = 'D:\Google\Chrome\Application\chromedriver.exe' # configure chromedriver
-browser =webdriver.Chrome(executable_path=chrome_driver)
+browser = webdriver.Chrome(executable_path=chrome_driver)
 browser.get('https://czx.ac.cn/cubesolver') # send http request
 browser.implicitly_wait(4)
 

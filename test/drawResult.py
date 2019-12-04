@@ -9,13 +9,13 @@ import pylab as pl
 
 y_cube=[]
 y_deep=[]
-xl = xlrd.open_workbook (r'F:\result.xls')
+xl = xlrd.open_workbook (r'result.xls')
 sheet = xl.sheet_by_name('Comparision')
 ave_cube = 0
 ave_deep = 0
-for num in  range (1000):
-    y_cube.append(sheet.row((num+1))[1].value)
-    y_deep.append(sheet.row((num+1))[3].value)
+for num in range (1000):
+    y_cube.append(sheet.row(num+1)[1].value)
+    y_deep.append(sheet.row(num+1)[3].value)
     ave_cube=ave_cube + y_cube[num]
     ave_deep=ave_deep + y_deep[num]
 
