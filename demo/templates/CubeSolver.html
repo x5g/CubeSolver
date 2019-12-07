@@ -126,8 +126,23 @@
                     </div>
                     <div class="Instructions1">
                         <h1>0  Instructions</h1>
-                        <p>The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!</p>
-                        <p>Here we provide a video to introduce the capabilities of Cube Solver.</p>
+                        <p>As we all know, it is very difficult to explore the solution of games (such as Rubik's cube, chess and card) in traditional way. For Rubik's cube, the total solution space of the third level is only 4.33 × 10 ^ 19, and it is impossible to explore the whole solution by traditional manpower. With the help of machine learning, we can explore the solution of game and help players to participate in the game better.</p>
+                        <p>The research object of this subject is Rubik's cube. As a kind of educational toy, cube is popular with the public for its entertainment. However, the rules of cube are complex, and the novices who play cube always have no way to start.</p>
+                        <p>The main work of this project is as follows:</p>
+                        <table style="width:100%">
+                            <tr style="width:100%">
+                                <td style="width: 10%"></td>
+                                <td style="width: 80%">
+                                    <h2>(1) analyze and compare the shortcomings of the existing software or web page for solving Rubik's cube</h2>
+                                    <h2>(2) design and implement a solution that allows players to restore Rubik's cube faster</h2>
+                                    <ol><h2>① front page: the entity cube input mode is mainly photography, supplemented by color correction. For expert players, it can also be directly input through rotation sequence; it provides the progress bar function of the cube solution process</h2></ol>
+                                    <ol><h2>② background: by comparing the current mainstream algorithm of solving cube, and taking into account the user experience, we choose the improved two phase algorithm as cube solver's algorithm of solving Rubik's cube</h2></ol>
+                                    <h2>(3) prospect the realized functions and propose the next improvement plan</h2>
+                                </td>
+                                <td style="width: 10%"></td>
+                            </tr>
+                        </table><br /><br />
+                        <p>Through our research, we have realized the functions that the existing software or web pages do not have. For players, we can provide clear guidance on the process of restoring the cube. Here we provide a video to introduce the capabilities of Cube Solver.</p>
 
                         <!--临时加个标签-->
                         <a style="color:white" href="https://www.bilibili.com/video/av77761128/">CubeSolverIntroductionsVideo</a><br /><br />
@@ -147,7 +162,6 @@
                             <source src="{% static 'static/media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
                         </video><br /><br />-->
 
-                        <p>In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of Rubik's cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of Rubik's cube solution.</p>
                         <h1>1  Scanning &amp; Algorithm Guide</h1>
                         <p>Randomly select a face of the cube as the initial front face, and then perform the following scanning operations. Note that you should aim each one side of the cube at the camera instead of yourself. For example, in the guide cube, we choose the white face as the initial front face. (white face is on the back of yellow face)</p>
 
@@ -163,7 +177,7 @@
                                 </tr>
                                 <tr style="width: 100%">
                                     <td>
-                                        <h2>Step2. Turn the Rubik's cube 90 degrees clockwise, scan this face (In this example, scan the green face), and turn back to the initial front face after scanning.</h2>
+                                        <h2>Step2. Turn the Rubik's cube 90 degrees clockwise at the top angle, scan this face (In this example, scan the green face), and turn back to the initial front face after scanning.</h2>
                                     </td>
                                     <td style="margin: auto">
                                         <iframe id="cubeStep2" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z&edit=0"></iframe>
@@ -171,7 +185,7 @@
                                 </tr>
                                 <tr style="width: 100%">
                                     <td>
-                                        <h2>Step3. Turn the Rubik's cube 90 degrees counter clockwise, scan this face (In this example, scan the blue face), and turn back to the initial front face after scanning. </h2>
+                                        <h2>Step3. Turn the Rubik's cube 90 degrees counter clockwise at the top angle, scan this face (In this example, scan the blue face), and turn back to the initial front face after scanning. </h2>
                                     </td>
                                     <td style="margin: auto">
                                         <iframe id="cubeStep3" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z'&edit=0"></iframe>
@@ -179,7 +193,7 @@
                                 </tr>
                                 <tr style="width: 100%">
                                     <td>
-                                        <h2>Step4. Turn the Rubik's cube down 90 degrees, scan this face (In this example, scan the red face), and then turn back to the initial front face after scanning.</h2>
+                                        <h2>Step4. Take the right hand as the base point, turn the Rubik's cube down 90 degrees, scan this face (In this example, scan the red face), and then turn back to the initial front face after scanning.</h2>
                                     </td>
                                     <td style="margin: auto">
                                         <iframe id="cubeStep4" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=X&edit=0"></iframe>
@@ -187,7 +201,7 @@
                                 </tr>
                                 <tr style="width: 100%">
                                     <td>
-                                        <h2>Step5. Turn the Rubik's cube up 90 degrees, scan the face (In this example, scan the orange face), and then turn back to the initial front face after scanning.</h2>
+                                        <h2>Step5. Take the right hand as the base point, turn the Rubik's cube up 90 degrees, scan the face (In this example, scan the orange face), and then turn back to the initial front face after scanning.</h2>
                                     </td>
                                     <td style="margin: auto">
                                         <iframe id="cubeStep5" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=X'&edit=0"></iframe>
@@ -195,7 +209,7 @@
                                 </tr>
                                 <tr style="width: 100%">
                                     <td>
-                                        <h2>Step6. Turn the Rubik's cube 180 degrees, scan this face (In this example, scan the yellow face).</h2>
+                                        <h2>Step6. Turn the Rubik's cube 180 degrees at the top angle, scan this face (In this example, scan the yellow face).</h2>
                                     </td>
                                     <td style="margin: auto">
                                         <iframe id="cubeStep6" width="90" height="90" scrolling="no" frameborder="0" src="cube?facelets=RRRRRRRRROOOOOOOOOYYYYYYYYYWWWWWWWWWGGGGGGGGGBBBBBBBBB&move=Z2&edit=0"></iframe>
@@ -239,12 +253,32 @@
                                     <p>B = Back face</p>
                                 </div>
                             </div>
-                            <span style="display: table; clear: both;"></span>
                         </div>
                     </div>
                     <div class="Instructions1">
                         <h1>2  Cube Solver Demo</h1>
-                        <p>After reading the above introduction, do you have any idea to try it yourself? Here we provide a demo, let's try to sovle a cube with cube solver!. If you don't have a solid cube that can be used to break up, it doesn't matter. You can try to click the button "Random". The cube on the right will be randomly scramble. Then click the button "Solve" and wait a moment, a solution progress bar will appear. Follow the progress bar to restore step by step, and you will fix your cube! Don't forget the cube on the right is 3D and rotatable, press and drag the left mouse button to try.</p><p>When you have a solid cube, you can follow the following process: Step 1, scan all sides of the cube in the order of scanning through webcam. Step 2, click the button "Draw" to map the six scanned faces to the Rubik's cube expansion map on the left, because the color of the scanning will be incorrect, you can correct it manually in this step. Step 3, click the button "Solve", and follow the progress bar to restore step by step, as mentioned before. We will verify your input before we solve the cube. If it is not solvable, we will give a prompt: please check your input.</p>
+                        <p>After reading the above introduction, do you have any idea to try it yourself? Here we provide a demo, let's try to sovle a cube with cube solver!. If you don't have a solid cube that can be used to break up, it doesn't matter. You can try to click the button "Random". The cube on the right will be randomly scramble. Then click the button "Solve" and wait a moment, a solution progress bar will appear. Follow the progress bar to restore step by step, and you will fix your cube! Don't forget the cube on the right is 3D and rotatable, press and drag the left mouse button to try.</p>
+                        <p>When you have a solid cube, you can follow the following process: </p>
+                        <center>
+                            <table style="width: 80%;">
+                                <tr style="width: 100%">
+                                    <td style="width: 100%">
+                                        <h2>Step 1. Scan all sides of the cube in the order of scanning through webcam.</h2>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step 2. Click the button "Draw" to map the six scanned faces to the Rubik's cube expansion map on the left, because the color of the scanning will be incorrect, you can correct it manually in this step.</h2>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%">
+                                    <td>
+                                        <h2>Step 3. Click the button "Solve", and follow the progress bar to restore step by step, as mentioned before. We will verify your input before we solve the cube. If it is not solvable, we will give a prompt: please check your input.</h2>
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                        <br /><br />
                     </div>
                 </div>
             </div>
@@ -1147,17 +1181,20 @@
             <div class="Instructions1">
                 <h1>3  Problems & Solutions</h1>
                 <h2>3.1  Color Recognition</h2>
-                <p>One of the biggest challenges in this project is color recognition. Figuring out what color a pixel is showing on your monitor is easy, because your computer has a digital model of it. But it's a little more tricky to read the input from a webcam to figure out what color is on a shiny sticker on a plastic cube. Every room has different lighting, stickers show glare if your monitor's brightness is too high, and so on. The best we can do is guess what color a sticker is. Of course, we can try to make our guesses really good.</p>
-                <p>We wrote code to find the mean HSV and modal RGB from each sticker. We eyeballed the HSV and RGB values and found some thresholds that worked 95% of the time in 95% of lightings. Of course, we included a GUI to manually modify the colors on each cell of the cube. A 3D 'mirror' of the cube is shown on the same screen as the webcam's view. The colors on this mirror represent what will be stored internally, so the user can notice if it doesn't match up with the physical cube.</p>
+                <p>One of the biggest challenges of this project is color recognition. The computer has a digital model, it is easy to find out the color of pixels displayed on the display, but it is difficult to read the input of the camera to find out the color distribution of the cube. Because cube surface will reflect light, considering the illumination, if the brightness is too high, cube surface will show glare, so we can guess the color. We choose to recognize colors by converting RGB to HSV.</p>
                 <img style="width:50%" src="{% static 'static/media/carbon-5.png' %}" alt="codehsv" />
                 <h2>3.2  Check Rubik's Cube</h2>
                 <p>One thing we can be sure of is that the Rubik's cube of unchecked input is not necessarily solved. In order to avoid user's wrong input, we need to design an algorithm that can check whether the input is solvable. Make up the color sequence facelets of the small pieces of each face of the Rubik's cube, check it with function verify main(), it encodes 54 pieces of Rubik's cube, mainly including checking the center color block of each face, the color block on the corner and the color block on the edge. The complete code is in verify.js and rclib.js. The main codes are as follows:</p>
                 <img style="width:70%" src="{% static 'static/media/carbon-6.png' %}" alt="codeverify" />
+                <p>In the actual test, we found that there are many verification modules that can not exclude a wrong state input: only exchange the center block color of any two faces.</p>
+                <img style="width:30%" src="{% static 'static/media/wrongstate.png' %}" alt="wrongstate" /><br /><br />
+                <p>This state is obviously wrong input, but many verification modules still pass the verification and give it to the background algorithm. The background algorithm can also generate the so-called restore solution sequence U D R2 L2 U D' R2 L2 D2, but there is no effective solution in fact.</p>
+                <img style="width: 10%" src="{% static 'static/media/wrongsolution.png' %}" alt="wrongsoluton" /><br /><br />
                 <h2>3.3  API of Two Phase Algorithm</h2>
                 <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
                 <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
-                <p>In the aspect of Rubik's cube solution, we choose Two Phase Algorithm (also called Kociemba Algorithm). You can visit <a href="http://kociemba.org/cube.htm" style="color:white">here</a> to learn more about the solution details.</p>
-                <p>The names of the facelet positions of the cube in the Two Phase Algorithm:</p>
+                <p>In the aspect of Rubik's cube solution, we choose the Optimized Two Phase Algorithm (Two Phase Algorithm also called <a href="http://kociemba.org/cube.htm" style="color:white">Kociemba Algorithm</a>).</p>
+                <p>The names of the facelet positions of the cube in the Optimized Two Phase Algorithm:</p>
                 <img style="width:30%" src="{% static 'static/media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
                 <p>A cube definition string "UBL..." means for example: In position U1 we have the U-color, in position U2 we have the B-color, in position U3 we have the L color etc. according to the order U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9, L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9 of the enum constants.</p>
                 <p>The API code to call the solve Rubik's cube algorithm in this HTML file is:</p>
@@ -1182,7 +1219,7 @@
                 </video>-->
 
                 <h2>4.2  Compare Cube Solver with other algorithms for solving Rubik's cube</h2>
-                <p>We compare the Cube Solver with other algorithms for solving Rubik's cube (including Cube Solver with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in one table and two figures. The curve in Figure 1 is the comparison of seven algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1.</p>
+                <p>We compare the Cube Solver with other algorithms for solving Rubik's cube (including Cube Solver with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in one table and two figures. The curve in Figure 1 is the comparison of six algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1.</p>
                 <p>It should be pointed out that the first parameter of CubeSolver is the expected number of steps, and the second parameter is the limit time. Obviously, CubeSolver can explore more solution states when the time limit is larger. And, whether it is CubeSolver(18,5) or CubeSolver(20,2), the actual steps are less than other algorithms in most cases. Considering the effect of user experience, we choose CubeSolver(20,2) as our Rubik's cube solution algorithm.</p>
                 <p>In particular, we provide the comparison method and py file of CubeSolver(20,2) and DeepCubeA, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub.</p>
 

@@ -27,10 +27,10 @@ time.sleep(1)
 xl = xlrd.open_workbook('result.xls')
 sheet = xl.sheet_by_name('Comparision')
 
-for num in range(63, 1000):
+for num in range(1000):
     # input = "D U' B' U' B D' B' D' L' L' U B F' D U' B R' U' D' D' U' F' U L'"
-    input = sheet.row(num+1)[4].value
-    print(input)
+    input = sheet.row(num+1)[0].value
+    #print(input)
 
     recoveryelem = browser.find_element_by_xpath('/html/body/div[2]/div/ul/li[2]/div/ul/li[5]')
     recoveryelem.click()
@@ -42,7 +42,7 @@ for num in range(63, 1000):
 
     executeelem = browser.find_element_by_xpath('/html/body/div[2]/div/ul/li[4]/div/ul/li[6]')
     executeelem.click()
-    time.sleep(10)
+    time.sleep(5)
 
     executedelem = browser.find_element_by_xpath('/html/body/div[2]/div/ul/li[4]/div/ul/li[3]/div/div/input')
     executedelem.clear()
@@ -103,7 +103,7 @@ for num in range(1000):
 xl = xlrd.open_workbook (r'result.xls')
 sheet = xl.sheet_by_name('Comparision')
 for num in range(1000):
-    input = sheet.row(num + 1)[7].value
+    input = sheet.row(num + 1)[13].value
     output_arr = input.split(' ')
     remove_same(output_arr)
     print(len(output_arr))

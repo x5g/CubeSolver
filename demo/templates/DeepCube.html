@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deep Cube</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+
+    <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="{% static 'DeepCube/jquery.min.js' %}"></script>
+    <![endif]-->
+
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'DeepCube/main.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h2>Solve the Rubik's Cube Using Deep Learning</h2>
+            <div id="program_container" class="container">
+                <div id="solution_container" class="container">
+                    <button disabled id="first_state" type="button">&#060;&#060;</button>
+                    <button disabled id="prev_state" type="button">&#060;</button>
+                    <button disabled id="next_state" type="button">&#062;</button>
+                    <button disabled id="last_state" type="button">&#062;&#062;</button>
+                    <h4 id="solution_text">Solution:</h4>
+                </div>
+
+                <div id="cube_div" class="container" style="padding: 60px">
+                    <section class="cube_container">
+                        <div id="cube">
+                            <figure id="front" class="front">
+                            </figure>
+                            <figure id="back" class="back">
+                            </figure>
+                            <figure id="right" class="right">
+                            </figure>
+                            <figure id="left" class="left">
+                            </figure>
+                            <figure id="top" class="top">
+                            </figure>
+                            <figure id="bottom" class="bottom">
+                            </figure>
+                        </div>
+                    </section>
+                </div>
+
+                <br />
+
+                <!--修改前-->
+                <!--<div id="button_container" class="container">
+                    <button disabled id="scramble" type="button">Scramble</button>
+                    <button disabled id="solve" type="button">Solve!</button>
+                </div>-->
+                <!--修改后-->
+                <div id="button_container" class="container">
+                    input: <input id="input" type="text" style="width:500px">
+                    <button id="rotation" type="button" onclick="rotation()">Rotation</button>
+                    <button id="initcube" type="button" onclick="initCube()">InitCube</button><br />
+                    <button id="scramble" type="button">Scramble</button>
+                    <button id="solve" type="button">Solve!</button>
+                    output: <input id="output" type="text" style="width:500px">
+                </div>
+
+            </div>
+        </center>
+    </div>
+    <br />
+    <center>
+        <h4>
+            Use the mouse to turn the cube. &#13;&#10;
+        </h4>
+        <h4>
+            Turn the faces with the U/D/L/R/B/F keys.
+            Hold shift to turn faces couter-clockwise.
+        </h4>
+        <h4>
+            Press scramble to randomly scramble the cube.
+            Press solve to solve the cube using deep learning!
+        </h4>
+    </center>
+    <br />
+    <div class="well well-lg">
+        <center>
+            <span class="paper-year">Source page from: <a href="http://deep.igb.uci.edu">Deep Cube</a>. Simple clone by GZY, CZX, WW.</span>
+        </center>
+    </div>
+
+    <script src="{% static 'DeepCube/jquery.min.js' %}"></script>
+    <script src={% static 'DeepCube/main.js' %}></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

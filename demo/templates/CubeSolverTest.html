@@ -194,6 +194,26 @@ function initCube(){
 			console.log(error);
 		},
 	});
+        document.getElementById('input').value = "";
+        document.getElementById('output').value = "";
+}
+
+function scrambleCube() {
+	disableInput();
+	clearSoln();
+	var rotation = [];
+	numMoves = randInt(25,30);
+	for (var i = 0; i < numMoves; i++) {
+		move = legalMoves[randInt(0, legalMoves.length)];
+		moves.push(move);
+		if(move.length == 3){
+			rotation.push(move[0]);
+		}else{
+			rotation.push(move[0] + "'");
+		}
+	}
+	document.getElementById('input').value = rotation.join(' ');
+	nextState(0);
 }
 
 function solveCube() {
@@ -258,7 +278,8 @@ function solveCube() {
                             </tr>
                         </table>
                         <p>If you operate all of the above correctly, you will see that DeepCubeA has been modified as follows:</p>
-                        <img style="width:70%" src="{% static 'static/media/deepcubea.png' %}" alt="DeepCubeA" /><br /><br />
+                        <!--<img style="width:70%" src="{% static 'static/media/deepcubea.png' %}" alt="DeepCubeA" /><br /><br />-->
+                        <iframe style="width: 90%; height: 800px" src="DeepCube" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><br /><br />
                         <p>Now you can try to compare the solution of Cube Solver and DeepCubeA, and provide you with an input sequence:</p>
                         <h3>D2 R‘ D’ F B D R2 D2 R‘ F2 D’ F2 U‘ B2 L2 U2 D R2 U</h3>
                         <p>You can type this sequence into the input box of DeepCubeA first, and then click the button "Rotation". After the Rubik's cube is rotated, click "Sovle!" and you will see the solution sequence of DeepCubeA in the output box: </p>
@@ -861,6 +882,7 @@ function solveCube() {
                     }*/
 
                     function rand(){
+                        home();
                         var movelist = ["U", "U'", "U2", "D", "D'", "D2", "L", "L'", "L2", "R", "R'", "R2", "F", "F'", "F2", "B", "B'", "B2"]
                         var randmove = [];
                         for(i = 0; i < 20 ; i++){
@@ -1051,23 +1073,23 @@ function solveCube() {
                                     'state': state
                                 },
                                 function(data){    //data.move为还原
-                                sol = data.move.replace(/^\s+|\s+$/g,"").replace(/\s+/g, " ");
+                                    sol = data.move.replace(/^\s+|\s+$/g,"").replace(/\s+/g, " ");
 
-                                //以下为show_solution()部分
-                                var af = cvt_to_anim(facelets);
-                                //$("#solinput").val(sol);
-                                $("#soloutput").val(sol + " (" + sol.split(" ").length + "f)");
+                                    //以下为show_solution()部分
+                                    var af = cvt_to_anim(facelets);
+                                    //$("#solinput").val(sol);
+                                    $("#soloutput").val(sol + " (" + sol.split(" ").length + "f)");
 
-                                setCubeStep(cube);//设置进度条
+                                    setCubeStep(cube);//设置进度条
 
-                                sol = sol.replace(/\s*/g, "");
-                                sol = sol.replace(/\'/g, "%27");
-                                //长网址写法
-                                // document.getElementById("solinput2").value = "http://czx.ac.cn/public/" + "cube.html?config=AnimCube.cfg&move=" + sol + "&facelets=" + af + "&edit=0";
-                                //短网址写法
-                                sohoShortURL("http://czx.ac.cn/public/" + "cube.html?config=AnimCube.cfg&move=" + sol + "&facelets=" + af + "&edit=0");
-
-                            });
+                                    sol = sol.replace(/\s*/g, "");
+                                    sol = sol.replace(/\'/g, "%27");
+                                    //长网址写法
+                                    // document.getElementById("solinput2").value = "http://czx.ac.cn/public/" + "cube.html?config=AnimCube.cfg&move=" + sol + "&facelets=" + af + "&edit=0";
+                                    //短网址写法
+                                    sohoShortURL("http://czx.ac.cn/public/" + "cube.html?config=AnimCube.cfg&move=" + sol + "&facelets=" + af + "&edit=0");
+                                }
+                            );
 
 
                         }

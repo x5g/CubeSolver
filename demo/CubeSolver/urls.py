@@ -22,5 +22,8 @@ urlpatterns = [
     re_path(r'(?i)^cubesolver$', views.cube_solver_index),
     re_path(r'(?i)^cubesolvertest$', views.cube_solver_test_index),
     re_path(r'(?i)^cube$', views.cube_index),
-    path('solver', views.solver)
+    re_path(r'(?i)^deepcube$', views.deepcube_index),
+    path('solver', views.solver),
+    path('initState', views.initState),
+    path('solve', views.solve)
 ]
