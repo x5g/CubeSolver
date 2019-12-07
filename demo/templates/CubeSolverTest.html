@@ -201,19 +201,52 @@ function initCube(){
 function scrambleCube() {
 	disableInput();
 	clearSoln();
-	var rotation = [];
-	numMoves = randInt(25,30);
-	for (var i = 0; i < numMoves; i++) {
-		move = legalMoves[randInt(0, legalMoves.length)];
-		moves.push(move);
-		if(move.length == 3){
-			rotation.push(move[0]);
-		}else{
-			rotation.push(move[0] + "'");
-		}
-	}
-	document.getElementById('input').value = rotation.join(' ');
-	nextState(0);
+	$.ajax({
+		url: 'initState',
+		data: {},
+		type: 'POST',
+		dataType: 'json',
+		success: function(response) {
+			setStickerColors(response["state"]);
+			rotateIdxs_old = response["rotateIdxs_old"];
+			rotateIdxs_new = response["rotateIdxs_new"];
+			stateToFE = response["stateToFE"];
+			FEToState = response["FEToState"];
+			legalMoves = response["legalMoves"];
+			enableInput();
+
+			var movelist = ["U", "U'", "U2", "D", "D'", "D2", "L", "L'", "L2", "R", "R'", "R2", "F", "F'", "F2", "B", "B'", "B2"]
+			var randmove = [];
+			moves = [];
+			numMoves = randInt(25, 30);
+			for (var i = 0; i < numMoves; i++) {
+				var direction = 1, move = movelist[Math.floor((Math.random() * movelist.length))];
+				randmove.push(move);
+				if(move.indexOf('\'') > 0){
+					direction = -1;
+					move = move[0].toString() + "_" + direction.toString();
+				}else if(move.indexOf('2') > 0) {
+					move = move[0].toString() + "_" + direction.toString();
+					moves.push(move);
+				}else{
+					move = move[0].toString() + "_" + direction.toString();
+				}
+				moves.push(move);
+			}
+			var randmoveinput = "";
+			for(i = 0; i < randmove.length; i++) {
+				randmoveinput += randmove[i];
+				if(i != randmove.length - 1){
+					randmoveinput += " ";
+				}
+			}
+            document.getElementById('input').value = randmoveinput;
+			nextState(0);
+		},
+		error: function(error) {
+			console.log(error);
+		},
+	});
 }
 
 function solveCube() {
@@ -264,7 +297,7 @@ function solveCube() {
 
 			setTimeout(function(){nextState(500)}, 500);
 		},
-		error: function(error) {
+		        error: function(error) {
 				console.log(error);
 				document.getElementById("solution_text").innerHTML = "..."
 				setTimeout(function(){solveCube()}, 500);
