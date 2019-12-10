@@ -40,7 +40,7 @@ then you can visit http://127.0.0.1:8000/cubesolver to experience the fun of Cub
 
 ## Special Description
 1. The DeepCube in this project is the API of the original website called because the server memory is not large enough.
-2. The full DeepCube project is in deepcube-full, another open source project of my GitHub.
+2. The full DeepCube project is in [DeepCube](https://github.com/x5g/DeepCube), another open source project of my GitHub.
 
 
 
