@@ -38,5 +38,10 @@ then you can visit http://127.0.0.1:8000/cubesolver to experience the fun of Cub
 9. Alibaba Cloud Computing, our server supplier, thank you for your low price server.
 10. Professor Luo Tiejian, thank you for your idea.
 
-<br>
+## Special Description
+1. The DeepCube in this project is the API of the original website called because the server memory is not large enough.
+2. The full DeepCube project is in deepcube-full, another open source project of my GitHub.
+
+
+
 Made by GZY, CZX, WW
