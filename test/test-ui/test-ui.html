@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="us">
+<head>
+    <title>Detection of Rubik's Cube Solution Sequence</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/roofpig_and_three.min.js"></script>
+</head>
+<body>
+    <center>
+    <h1>Detection of Rubik's Cube Solution Sequence</h1>
+    <form id="form">
+        <p>Question: <input type="text" name="question" style="width: 960px"></p>
+        <p>&nbsp;&nbsp;Answer: <input type="text" name="answer" style="width: 960px"></p>
+        <p><input type="submit" value="show"></p>
+    </form>
+    
+    
+      <div id="question" style="width: 480px; height: 480px; display: inline-block;"></div>
+      <div id="answer"   style="width: 480px; height: 480px; display: inline-block;"></div>
+    </center>
+
+    <script>
+      document.getElementById('form').addEventListener('submit', function(event) {
+        CubeAnimation.create_in_dom('#question', 'setupmoves=' + event.target.question.value, "class='roofpig'");
+        CubeAnimation.create_in_dom('#answer', 'alg=' + event.target.answer.value, "class='roofpig'");
+
+        event.stopPropagation();
+        event.preventDefault();
+      });
+    </script>
+</body>
+</html>
