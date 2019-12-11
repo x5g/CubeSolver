@@ -34,7 +34,7 @@ url = 'http://deepcube.igb.uci.edu'
 @csrf_exempt
 def initState(request):
     import os
-    with open(os.getcwd() + '/static/DeepCube/initState.json', 'r') as f:
+    with open(os.getcwd() + '/../static/DeepCube/initState.json', 'r') as f:
         result = json.load(f)
     return HttpResponse(json.dumps(result), content_type='application/json')
 
