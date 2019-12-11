@@ -15,16 +15,18 @@ In conclusion, compared with other online Rubik's cube solving web pages, our hi
 You can experience the fun of cube solver by yourself. The demo website is [Cube Solver](https://czx.ac.cn/cubesolver)
 
 ## Code Files Description
-1. demo: Cube Solver full runnable files
+1. web: Cube Solver full runnable files
 2. src: source file .zip of each module in Cube Solver
 3. test: test files and test results in Cube Solver
 
 ## Usage
-This project needs Python 3.7, Django 2 and other necessary modules. You can download all the files or just the "demo", and then enter the command in "demo":
+This project needs Python 3.7, Django 2 and other necessary modules in requirements.txt. You can enter the follow codes:
 ```
-python3 manage.py runserver      
+pip3 install -r requirements.txt
+cd web
+python3 manage.py runserver
 ```
-then you can visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver.
+then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver.
 
 ## Thanks
 1. hkociemba, author of our solving Rubik's cube algorithm file [RubiksCube-TwophaseSovler](https://github.com/hkociemba/rubikscube-twophasesolver).
@@ -39,7 +41,7 @@ then you can visit http://127.0.0.1:8000/cubesolver to experience the fun of Cub
 10. Professor Luo Tiejian, thank you for your idea.
 
 ## Special Description
-1. The DeepCube in this project is the API of the original website called because the server memory is not large enough.
+1. The DeepCube in this project is the API of the original website called because our server memory is not large enough.
 2. The full DeepCube project is in [DeepCube](https://github.com/x5g/DeepCube), another open source project of my GitHub.
 
 
