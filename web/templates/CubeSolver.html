@@ -1182,14 +1182,15 @@
                 <h1>3  Problems & Solutions</h1>
                 <h2>3.1  Color Recognition</h2>
                 <p>One of the biggest challenges of this project is color recognition. The computer has a digital model, it is easy to find out the color of pixels displayed on the display, but it is difficult to read the input of the camera to find out the color distribution of the cube. Because cube surface will reflect light, considering the illumination, if the brightness is too high, cube surface will show glare, so we can guess the color. We choose to recognize colors by converting RGB to HSV.</p>
-                <img style="width:50%" src="{% static 'static/media/carbon-5.png' %}" alt="codehsv" />
+                <p>First, RGB to HSV:</p>
+                <img style="width: 70%" src="{% static 'static/media/rgb2hsv.png' %}" alt="rgb2hsv" /><br /><br />
+                <p>Then, HSV to Colors:</p>
+                <img style="width: 40%;" src="{% static 'static/media/hsv2colors.png' %}" alt="hsv2colors" /><br /><br />
                 <h2>3.2  Check Rubik's Cube</h2>
-                <p>One thing we can be sure of is that the Rubik's cube of unchecked input is not necessarily solved. In order to avoid user's wrong input, we need to design an algorithm that can check whether the input is solvable. Make up the color sequence facelets of the small pieces of each face of the Rubik's cube, check it with function verify main(), it encodes 54 pieces of Rubik's cube, mainly including checking the center color block of each face, the color block on the corner and the color block on the edge. The complete code is in verify.js and rclib.js. The main codes are as follows:</p>
-                <img style="width:70%" src="{% static 'static/media/carbon-6.png' %}" alt="codeverify" />
-                <p>In the actual test, we found that there are many verification modules that can not exclude a wrong state input: only exchange the center block color of any two faces.</p>
+                <p>One thing we can be sure of is that unchecked input of the Rubik's cube may not be solved. In order to avoid user's wrong input, we need to design an algorithm to check whether the input is solvable. This part uses test cases to drive development. First, write the test input, and then look for projects on GitHub that pass all the test cases. After our test, many verification modules only verify the number of six colors, rather than really verify whether the user input is legal. There is an error state input, which can not be excluded by ordinary verification module: only exchange the center block color of any two faces.</p>
                 <img style="width:30%" src="{% static 'static/media/wrongstate.png' %}" alt="wrongstate" /><br /><br />
                 <p>This state is obviously wrong input, but many verification modules still pass the verification and give it to the background algorithm. The background algorithm can also generate the so-called restore solution sequence U D R2 L2 U D' R2 L2 D2, but there is no effective solution in fact.</p>
-                <img style="width: 10%" src="{% static 'static/media/wrongsolution.png' %}" alt="wrongsoluton" /><br /><br />
+                <img style="width: 60%" src="{% static 'static/media/wrongsolution2.png' %}" alt="wrongsoluton" /><br /><br />
                 <h2>3.3  API of Two Phase Algorithm</h2>
                 <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
                 <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
@@ -1225,51 +1226,7 @@
 
                 <img style="width: 90%" src="{% static 'static/media/myplot0.png' %}" alt="CompareResult" /><br /><br />
                 <img style="width: 90%" src="{% static 'static/media/myplot1.png' %}" alt="CompareResult" /><br /><br />
-
-                <center>
-                    <table border="1">
-                        <tr>
-                            <td colspan="7" style="text-align: center">Comparision of CubeSolver(18,5), CubeSolver(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; width: 16%"></td>
-                            <td style="text-align: center; width: 14%">CubeSolver(18,5)</td>
-                            <td style="text-align: center; width: 14%">CubeSolver(20,2)</td>
-                            <td style="text-align: center; width: 14%">DeepCubeA</td>
-                            <td style="text-align: center; width: 14%">LayerFirst</td>
-                            <td style="text-align: center; width: 14%">CFOP</td>
-                            <td style="text-align: center; width: 14%">Kociemba</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; width: 16%">Average step number</td>
-                            <td style="text-align: center; width: 14%">18.597</td>
-                            <td style="text-align: center; width: 14%">19.802</td>
-                            <td style="text-align: center; width: 14%">24.934</td>
-                            <td style="text-align: center; width: 14%">127.684</td>
-                            <td style="text-align: center; width: 14%">59.635</td>
-                            <td style="text-align: center; width: 14%">20.792</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; width: 16%">Minimum step number</td>
-                            <td style="text-align: center; width: 14%">15</td>
-                            <td style="text-align: center; width: 14%">17</td>
-                            <td style="text-align: center; width: 14%">16</td>
-                            <td style="text-align: center; width: 14%">80</td>
-                            <td style="text-align: center; width: 14%">38</td>
-                            <td style="text-align: center; width: 14%">17</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; width: 16%">Maximum step number</td>
-                            <td style="text-align: center; width: 14%">20</td>
-                            <td style="text-align: center; width: 14%">21</td>
-                            <td style="text-align: center; width: 14%">40</td>
-                            <td style="text-align: center; width: 14%">169</td>
-                            <td style="text-align: center; width: 14%">93</td>
-                            <td style="text-align: center; width: 14%">23</td>
-                        </tr>
-                    </table>
-                </center>
-                <br />
+                <img style="width:60%" src="{% static 'static/media/compareResultTable.png' %}" alt="compareResultTable" /><br /><br />
                 <p>Here is a demo test video about comparing CubeSolver(20,2) with DeepCubeA, and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
 
 
@@ -1298,7 +1255,7 @@
                         <td style="width: 80%">
                             <p>hkociemba, author of our solving Rubik's cube algorithm file <a href="https://github.com/hkociemba/rubikscube-twophasesolver" style="color:white">RubiksCube-TwophaseSovler</a>.</p>
                             <p>petr-lee, author of our scanning Rubik's cube module file <a href="https://github.com/petr-lee/RubikScan" style="color:white">RubikScan</a>.</p>
-                            <p>mfeather1, author of our drawing Rubik's cube module file <a href="https://github.com/mfeather1/3ColorCube" style="color:white">3ColorCube</a>.</p>
+                            <p>mfeather1, author of our drawing Rubik's cube and verification input module file <a href="https://github.com/mfeather1/3ColorCube" style="color:white">3ColorCube</a>.</p>
                             <p>kmh0228, author of our showing Rubik's cube module file <a href="https://github.com/kmh0228/kmh0228.github.com/tree/master/study/Cube" style="color: white">Cube.js</a>.</p>
                             <p>iyangyuan, author of our solving Rubik's cube process bar module file <a href="https://github.com/iyangyuan/ystep" style="color: white">ystep</a>.</p>
                             <p>carbon-app, author of our highlight codes pictures file <a href="https://github.com/carbon-app/carbon" style="color: white">carbon</a>.</p>

@@ -32,7 +32,7 @@ then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver
 1. hkociemba, author of our solving Rubik's cube algorithm file [RubiksCube-TwophaseSovler](https://github.com/hkociemba/rubikscube-twophasesolver).
 2. petr-lee, author of our scanning Rubik's cube module file [RubikScan](https://github.com/petr-lee/RubikScan).
 3. mfeather1, author of our drawing Rubik's cube module file [3ColorCube](https://github.com/mfeather1/3ColorCube).
-4. kmh0228, author of our showing Rubik's cube module file [Cube.js](https://github.com/kmh0228/kmh0228.github.com/tree/master/study/Cube).
+4. kmh0228, author of our showing Rubik's cube and verification input module file [Cube.js](https://github.com/kmh0228/kmh0228.github.com/tree/master/study/Cube).
 5. iyangyuan, author of our solving Rubik's cube process bar module file [ystep](https://github.com/iyangyuan/ystep).
 6. carbon-app, author of our highlight codes pictures file [carbon](https://github.com/carbon-app/carbon).
 7. Forest Agostinelli, Stephen McAleer, Alexander Shmakov, Pierre Baldi, thank you for opening the source code of the algorithm [DeepCubeA](https://codeocean.com/capsule/5723040/tree/v1).
