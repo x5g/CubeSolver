@@ -111,12 +111,24 @@ for num in range(1000):
 
 '''
 # 计算步数 不去重
-xl = xlrd.open_workbook (r'result.xls')
+xl = xlrd.open_workbook('result.xls')
 sheet = xl.sheet_by_name('Comparision')
 for num in range(1000):
-    input = sheet.row(num + 1)[11].value
+    input = sheet.row(num + 1)[7].value
     output_arr = input.split(' ')
-    print(len(output_arr) - 1)
+
+    # 带步数(20f)这样的写法
+    # step_number = len(output_arr) - 1
+    # for i in range(len(output_arr) - 1) :
+    # if output_arr[i].find('2') == 1:
+    #     step_number = step_number + 1
+
+    # 不带步数的写法
+    step_number = len(output_arr)
+    for i in range(len(output_arr)):
+        if output_arr[i].find('2') == 1:
+            step_number = step_number + 1
+    print(step_number)
 '''
 
 '''
@@ -131,46 +143,58 @@ import xlrd
 import pylab as pl
 
 
-y_cube=[]
-y_deep=[]
-y_cengxianfa=[]
-y_cfop=[]
-y_kociemba=[]
-y_cubesolver2=[]
+y_OKociemba=[]
+y_DeepCubeA=[]
+y_LayerFirst=[]
+y_CFOP=[]
+y_Kociemba=[]
+y_OKociemba2=[]
 xl = xlrd.open_workbook (r'result.xls')
 sheet = xl.sheet_by_name('Comparision')
-ave_cube = 0
-ave_deep = 0
-ave_cengxianfa=0
-ave_cfop=0
-ave_kociemba=0
-ave_cubesolver2=0
+ave_OKociemba = 0
+ave_DeepCubeA = 0
+ave_LayerFirst = 0
+ave_CFOP = 0
+ave_Kociemba = 0
+ave_OKociemba2 = 0
 for num in range (1000):
-    y_cube.append(sheet.row(num+1)[1].value)
-    y_deep.append(sheet.row(num+1)[3].value)
-    y_cengxianfa.append(sheet.row(num+1)[6].value)
-    y_cfop.append(sheet.row(num+1)[8].value)
-    y_kociemba.append(sheet.row(num+1)[10].value)
-    y_cubesolver2.append(sheet.row(num+1)[12].value)
-    ave_cube=ave_cube + y_cube[num]
-    ave_deep=ave_deep + y_deep[num]
-    ave_cengxianfa=ave_cengxianfa+y_cengxianfa[num]
-    ave_cfop=ave_cfop+y_cfop[num]
-    ave_kociemba=ave_kociemba+y_kociemba[num]
-    ave_cubesolver2=ave_cubesolver2+y_cubesolver2[num]
+    # 两种技计数模式：模式一 计算认为D2为1步，模式二 认为D2为2步
 
-ave_cube = ave_cube/1000
-ave_deep = ave_deep/1000
-ave_cengxianfa = ave_cengxianfa/1000
-ave_cfop = ave_cfop/1000
-ave_kociemba = ave_kociemba/1000
-ave_cubesolver2 = ave_cubesolver2/1000
-print(str(ave_kociemba), str(min(y_kociemba)), str(max(y_kociemba)))
-print(str(ave_cube), str(min(y_cube)), str(max(y_cube)))
-print(str(ave_cubesolver2), str(min(y_cubesolver2)), str(max(y_cubesolver2)))
-print(str(ave_cfop), str(min(y_cfop)), str(max(y_cfop)))
-print(str(ave_cengxianfa), str(min(y_cengxianfa)), str(max(y_cengxianfa)))
-print(str(ave_deep), str(min(y_deep)), str(max(y_deep)))
+    # 第一种计数模式下的数据源
+    # y_OKociemba.append(sheet.row(num+1)[2].value)
+    # y_DeepCubeA.append(sheet.row(num+1)[5].value)
+    # y_LayerFirst.append(sheet.row(num+1)[8].value)
+    # y_CFOP.append(sheet.row(num+1)[11].value)
+    # y_Kociemba.append(sheet.row(num+1)[14].value)
+    # y_OKociemba2.append(sheet.row(num+1)[17].value)
+
+    # 第二种计数模式下的数据源
+    y_OKociemba.append(sheet.row(num+1)[3].value)
+    y_DeepCubeA.append(sheet.row(num+1)[6].value)
+    y_LayerFirst.append(sheet.row(num+1)[9].value)
+    y_CFOP.append(sheet.row(num+1)[12].value)
+    y_Kociemba.append(sheet.row(num+1)[15].value)
+    y_OKociemba2.append(sheet.row(num+1)[18].value)
+
+    ave_OKociemba = ave_OKociemba + y_OKociemba[num]
+    ave_DeepCubeA = ave_DeepCubeA + y_DeepCubeA[num]
+    ave_LayerFirst = ave_LayerFirst + y_LayerFirst[num]
+    ave_CFOP = ave_CFOP + y_CFOP[num]
+    ave_Kociemba = ave_Kociemba + y_Kociemba[num]
+    ave_OKociemba2 = ave_OKociemba2 + y_OKociemba2[num]
+
+ave_OKociemba = ave_OKociemba / 1000
+ave_DeepCubeA = ave_DeepCubeA / 1000
+ave_LayerFirst = ave_LayerFirst / 1000
+ave_CFOP = ave_CFOP / 1000
+ave_Kociemba = ave_Kociemba / 1000
+ave_OKociemba2 = ave_OKociemba2 / 1000
+print("Kociemba = ", str(ave_Kociemba), str(min(y_Kociemba)), str(max(y_Kociemba)))
+print("OKociemba = ", str(ave_OKociemba), str(min(y_OKociemba)), str(max(y_OKociemba)))
+print("Okociemba2 = ", str(ave_OKociemba2), str(min(y_OKociemba2)), str(max(y_OKociemba2)))
+print("CFOP = ", str(ave_CFOP), str(min(y_CFOP)), str(max(y_CFOP)))
+print("LayerFirst = ", str(ave_LayerFirst), str(min(y_LayerFirst)), str(max(y_LayerFirst)))
+print("DeepCubeA = ", str(ave_DeepCubeA), str(min(y_DeepCubeA)), str(max(y_DeepCubeA)))
 
 # Draw the result
 x=[]
@@ -179,31 +203,37 @@ for i in range (1000): # Abscissa assignment
 plt.figure(figsize=[20,5],dpi= 400)
 
 # Broken line diagram
-plt.plot(x, y_cubesolver2, 'blue', label='CubeSolver(18,5)')
-plt.plot(x, y_cube, 'red', label='CubeSolver(20,2)')
-plt.plot(x, y_deep, 'green', label='DeepCubeA')
-plt.plot(x, y_cengxianfa, 'black', label='LayerFirst')
-plt.plot(x, y_cfop, 'purple', label='CFOP')
-plt.plot(x, y_kociemba, 'orange', label='Kociemba')
+plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
+plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
+plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
+plt.plot(x, y_LayerFirst, 'black', label='LayerFirst')
+plt.plot(x, y_CFOP, 'purple', label='CFOP')
+plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
 
 # Scatter diagram
-# plt.scatter(x, y_cubesolver2, marker = '.', color = 'blue', s = 15, label = 'CubeSolver(18,5)')
-# plt.scatter(x, y_cube, marker = '.',color = 'red', s = 15 ,label = 'CubeSolver(20,2)')
-# plt.scatter(x, y_deep, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
-# plt.scatter(x, y_cengxianfa, marker = '.',color = 'black', s = 15 ,label = 'LayerFirst')
-# plt.scatter(x, y_cfop, marker = '.', color = 'purple', s = 15, label = 'CFOP')
-# plt.scatter(x, y_kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
+# plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
+# plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
+# plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
+# plt.scatter(x, y_LayerFirst, marker = '.',color = 'black', s = 15 ,label = 'LayerFirst')
+# plt.scatter(x, y_CFOP, marker = '.', color = 'purple', s = 15, label = 'CFOP')
+# plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
 
-plt.title('Comparision of CubeSolver(18,5), CubeSolver(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba')
+# 第一种计数模式下的标题
+# plt.title('Comparision of O-Kociemba(18,5), O-Kociemba(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba in Counting Mode 1')
+# 第二种计数模式下的标题
+plt.title('Comparision of O-Kociemba(18,5), O-Kociemba(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba in Counting Mode 2')
 plt.xlabel('Time')
 plt.ylabel('Step Number')
 plt.xlim(0,1000)
-plt.ylim(0,180)
+# 第一种计数模式下的范围
+# plt.ylim(0,180)
+# 第二种计数模式下的范围
+plt.ylim(0, 200)
 plt.legend(loc = 1)
 plt.show()
 '''
 
-'''
+
 # 画图2
 # Draw the result from result.xls
 # Author: Wang Wei
@@ -214,46 +244,45 @@ import xlwt
 import xlrd
 import pylab as pl
 
-y_cube=[]
-y_deep=[]
-y_cengxianfa=[]
-y_cfop=[]
-y_kociemba=[]
-y_cubesolver2=[]
+y_OKociemba=[]
+y_DeepCubeA=[]
+y_Kociemba=[]
+y_OKociemba2=[]
 xl = xlrd.open_workbook (r'result.xls')
 sheet = xl.sheet_by_name('Comparision')
-ave_cube = 0
-ave_deep = 0
-ave_cengxianfa=0
-ave_cfop=0
-ave_kociemba=0
-ave_cubesolver2=0
+ave_OKociemba = 0
+ave_DeepCubeA = 0
+ave_Kociemba = 0
+ave_OKociemba2 = 0
 for num in range (1000):
-    y_cube.append(sheet.row(num+1)[1].value)
-    y_deep.append(sheet.row(num+1)[3].value)
-    y_cengxianfa.append(sheet.row(num+1)[6].value)
-    y_cfop.append(sheet.row(num+1)[8].value)
-    y_kociemba.append(sheet.row(num+1)[10].value)
-    y_cubesolver2.append(sheet.row(num+1)[12].value)
-    ave_cube=ave_cube + y_cube[num]
-    ave_deep=ave_deep + y_deep[num]
-    ave_cengxianfa=ave_cengxianfa+y_cengxianfa[num]
-    ave_cfop=ave_cfop+y_cfop[num]
-    ave_kociemba=ave_kociemba+y_kociemba[num]
-    ave_cubesolver2=ave_cubesolver2+y_cubesolver2[num]
+    # 两种技计数模式：模式一 计算认为D2为1步，模式二 认为D2为2步
 
-ave_cube = ave_cube/1000
-ave_deep = ave_deep/1000
-ave_cengxianfa = ave_cengxianfa/1000
-ave_cfop = ave_cfop/1000
-ave_kociemba = ave_kociemba/1000
-ave_cubesolver2 = ave_cubesolver2/1000
-print(ave_cube)
-print(ave_deep)
-print(ave_cengxianfa)
-print(ave_cfop)
-print(ave_kociemba)
-print(ave_cubesolver2)
+    # 第一种计数模式下的数据源
+    # y_OKociemba.append(sheet.row(num+1)[2].value)
+    # y_DeepCubeA.append(sheet.row(num+1)[5].value)
+    # y_Kociemba.append(sheet.row(num+1)[14].value)
+    # y_OKociemba2.append(sheet.row(num+1)[17].value)
+
+    # 第二种计数模式下的数据源
+    y_OKociemba.append(sheet.row(num+1)[3].value)
+    y_DeepCubeA.append(sheet.row(num+1)[6].value)
+    y_Kociemba.append(sheet.row(num+1)[15].value)
+    y_OKociemba2.append(sheet.row(num+1)[18].value)
+
+    ave_OKociemba = ave_OKociemba + y_OKociemba[num]
+    ave_DeepCubeA = ave_DeepCubeA + y_DeepCubeA[num]
+    ave_Kociemba = ave_Kociemba + y_Kociemba[num]
+    ave_OKociemba2 = ave_OKociemba2 + y_OKociemba2[num]
+
+ave_OKociemba = ave_OKociemba / 1000
+ave_DeepCubeA = ave_DeepCubeA / 1000
+ave_Kociemba = ave_Kociemba / 1000
+ave_OKociemba2 = ave_OKociemba2 / 1000
+print("Kociemba = ", str(ave_Kociemba), str(min(y_Kociemba)), str(max(y_Kociemba)))
+print("OKociemba = ", str(ave_OKociemba), str(min(y_OKociemba)), str(max(y_OKociemba)))
+print("Okociemba2 = ", str(ave_OKociemba2), str(min(y_OKociemba2)), str(max(y_OKociemba2)))
+print("DeepCubeA = ", str(ave_DeepCubeA), str(min(y_DeepCubeA)), str(max(y_DeepCubeA)))
+
 
 # Draw the result
 x=[]
@@ -262,26 +291,29 @@ for i in range (1000): # Abscissa assignment
 plt.figure(figsize=[20,5],dpi= 400)
 
 # Broken line diagram
-plt.plot(x, y_cubesolver2, 'blue', label='CubeSolver(18,5)')
-plt.plot(x, y_cube, 'red', label='CubeSolver(20,2)')
-plt.plot(x, y_deep, 'green', label='DeepCubeA')
-# plt.plot(x, y_cengxianfa, 'black', label='LayerFirst')
-# plt.plot(x, y_cfop, 'purple', label='CFOP')
-plt.plot(x, y_kociemba, 'orange', label='Kociemba')
+plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
+plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
+plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
+plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
 
 # Scatter diagram
-# plt.scatter(x, y_cubesolver2, marker = '.', color = 'blue', s = 15, label = 'CubeSolver(18,5)')
-# plt.scatter(x, y_cube, marker = '.',color = 'red', s = 15 ,label = 'CubeSolver(20,2)')
-# plt.scatter(x, y_deep, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
-# #plt.scatter(x, y_cengxianfa, marker = '.',color = 'black', s = 15 ,label = 'LayerFirst')
-# #plt.scatter(x, y_cfop, marker = '.', color = 'purple', s = 15, label = 'CFOP')
-# plt.scatter(x, y_kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
+# plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
+# plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
+# plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
+# plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
 
-plt.title('Comparision of CubeSolver(18,5), CubeSolver(20,2), DeepCubeA and Kociemba')
+
+# 第一种计数模式下的标题
+# plt.title('Comparision of O-Kociemba(18,5), O-Kociemba(20,2), DeepCubeA and Kociemba in Counting Mode 1')
+# 第二种计数模式下的标题
+plt.title('Comparision of O-Kociemba(18,5), O-Kociemba(20,2), DeepCubeA and Kociemba in Counting Mode 2')
 plt.xlabel('Time')
 plt.ylabel('Step Number')
 plt.xlim(0,1000)
-plt.ylim(15,40)
+# 第一种计数模式下的范围
+# plt.ylim(15,40)
+# 第二种技术模式下的范围
+plt.ylim(15,45)
 plt.legend(loc = 1)
 plt.show()
-'''
+

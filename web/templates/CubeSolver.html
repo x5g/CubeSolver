@@ -1191,11 +1191,11 @@
                 <img style="width:30%" src="{% static 'static/media/wrongstate.png' %}" alt="wrongstate" /><br /><br />
                 <p>This state is obviously wrong input, but many verification modules still pass the verification and give it to the background algorithm. The background algorithm can also generate the so-called restore solution sequence U D R2 L2 U D' R2 L2 D2, but there is no effective solution in fact.</p>
                 <img style="width: 60%" src="{% static 'static/media/wrongsolution2.png' %}" alt="wrongsoluton" /><br /><br />
-                <h2>3.3  API of Two Phase Algorithm</h2>
+                <h2>3.3  API of O-Kociemba Algorithm</h2>
                 <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
                 <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
-                <p>In the aspect of Rubik's cube solution, we choose the Optimized Two Phase Algorithm (Two Phase Algorithm also called <a href="http://kociemba.org/cube.htm" style="color:white">Kociemba Algorithm</a>).</p>
-                <p>The names of the facelet positions of the cube in the Optimized Two Phase Algorithm:</p>
+                <p>In the aspect of Rubik's cube solution, we choose the Optimized Kociemba Algorithm (<a href="http://kociemba.org/cube.htm" style="color:white">Kociemba Algorithm</a> also called Two Phase Algorithm).</p>
+                <p>The names of the facelet positions of the cube in the Optimized Kociemba Algorithm:</p>
                 <img style="width:30%" src="{% static 'static/media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
                 <p>A cube definition string "UBL..." means for example: In position U1 we have the U-color, in position U2 we have the B-color, in position U3 we have the L color etc. according to the order U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9, L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9 of the enum constants.</p>
                 <p>The API code to call the solve Rubik's cube algorithm in this HTML file is:</p>
@@ -1219,19 +1219,26 @@
                     <source src="{% static 'static/media/CubeSolverAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
-                <h2>4.2  Compare Cube Solver with other algorithms for solving Rubik's cube</h2>
-                <p>We compare the Cube Solver with other algorithms for solving Rubik's cube (including Cube Solver with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in one table and two figures. The curve in Figure 1 is the comparison of six algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1.</p>
-                <p>It should be pointed out that the first parameter of CubeSolver is the expected number of steps, and the second parameter is the limit time. Obviously, CubeSolver can explore more solution states when the time limit is larger. And, whether it is CubeSolver(18,5) or CubeSolver(20,2), the actual steps are less than other algorithms in most cases. Considering the effect of user experience, we choose CubeSolver(20,2) as our Rubik's cube solution algorithm.</p>
-                <p>In particular, we provide the comparison method and py file of CubeSolver(20,2) and DeepCubeA, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub.</p>
+                <h2>4.2  Other Test</h2>
+                <p>Due to the limitation of technology, scanning input can not be tested automatically. We choose the two most common entity Rubik's cube on the market, the real color Rubik's cube and the sticker Rubik's cube. After testing in different light, the success rate of real color cube is higher than that of sticker cube. This is related to our HSV identification interval design.</p>
+                <img style="width: 20%" src="{% static 'static/media/twocubes.png' %}" alt="twocubes" /><br /><br />
 
-                <img style="width: 90%" src="{% static 'static/media/myplot0.png' %}" alt="CompareResult" /><br /><br />
-                <img style="width: 90%" src="{% static 'static/media/myplot1.png' %}" alt="CompareResult" /><br /><br />
+                <h2>4.3  Compare O-Kociemba with other algorithms for solving Rubik's cube</h2>
+                <p>We compare the O-Kociemba with other algorithms for solving Rubik's cube (including O-Kociemba with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in two tables and four figures.</p>
+                <p>We define two counting modes: mode 1 considers "D2" as step number 1, and mode 2 considers "D2" as step number 2. In counting mode 1: the curve in Figure 1 is the comparison of six algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1. In counting mode 2: the curve in Figure 3 is the comparison of six algorithms, and Figure 4 is the curve with steps of 15-45 in the enlarged version of Figure 3. Table 1 is the detailed quantization data of six algorithms in two different counting modes.</p>
+                <p>It should be pointed out that the first parameter of O-Kociemba algorithm is the expected number of steps, and the second parameter is the limit time. Obviously, O-Kociemba can explore more solution states when the time limit is larger. And, whether it is O-Kociemba(18,5) or O-Kociemba(20,2), the actual steps are less than other algorithms in most cases. Although we can see from table 1 that O-Kociemba(18,5) and O-Kociemba(20,2) are not as good as DeepCubeA algorithm in counting mode 2, the counting mode defined in mode 2 is obviously not suitable for real users to solve the cube. Therefore, count mode 1 is the user's actual experience standard. Thus, considering the effect of user experience, we choose O-Kociemba(20,2) as our Rubik's cube solution algorithm.</p>
+
+                <img style="width: 90%" src="{% static 'static/media/mode1_6.png' %}" alt="mode1_6.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'static/media/mode1_4.png' %}" alt="mode1_4.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'static/media/mode2_6.png' %}" alt="mode2_6.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'static/media/mode2_4.png' %}" alt="mode2_4.png" /><br /><br />
                 <img style="width:60%" src="{% static 'static/media/compareResultTable.png' %}" alt="compareResultTable" /><br /><br />
-                <p>Here is a demo test video about comparing CubeSolver(20,2) with DeepCubeA, and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
+
+                <p>In particular, we provide the comparison method and python file of O-Kociemba(20,2) and DeepCubeA, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub. Here is a demo test video about comparing OKociemba(20,2) with DeepCubeA in counting mode 1, and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
 
 
                 <!--临时加个标签-->
-                <a style="color:white" href="https://www.bilibili.com/video/av77760383/">CompareCubeSovlerandDeepCubeAAutomatedTestVideo</a>
+                <a style="color:white" href="https://www.bilibili.com/video/av77760383/">CompareCubeSovlerAndDeepCubeAAutomatedTestVideo</a>
                 <!--自动化对比测试视频插入在这里-->
                 <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760383&cid=133031093&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                 <br /><br />-->
