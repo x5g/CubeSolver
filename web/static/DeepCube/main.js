@@ -136,12 +136,22 @@ function enableInput() {
 	document.getElementById("scramble").disabled=false;
 	document.getElementById("solve").disabled=false;
 	$(document).on("keypress", buttonPressed);
+
+	//添加input、rotation、initcube的启用
+	document.getElementById("input").disabled = false;
+	document.getElementById("rotation").disabled = false;
+	document.getElementById("initcube").disabled = false;
 }
 
 function disableInput() {
 	document.getElementById("scramble").disabled=true;
 	document.getElementById("solve").disabled=true;
 	$(document).off("keypress", buttonPressed);
+
+	//添加input、rotation、initcube的禁用
+	document.getElementById("input").disabled = true;
+	document.getElementById("rotation").disabled = true;
+	document.getElementById("initcube").disabled = true;
 }
 
 function nextState(moveTimeout=0) {
