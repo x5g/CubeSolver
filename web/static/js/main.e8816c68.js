@@ -1,3 +1,4 @@
+var Rubiks_slot_id = -1;
 !
 function(e) {
     function t(r) {
@@ -3534,7 +3535,7 @@ function(e, t, n) {
     c = (n.n(s), n(135)),
     f = n(317);
     l()(),
-    a.a.render(o.a.createElement(c.a, null), document.getElementById("root1")),
+    a.a.render(o.a.createElement(c.a, null), document.getElementById("root")),
     Object(f.a)()
 },
 function(e, t, n) {
@@ -7643,7 +7644,7 @@ function(e, t, n) {
         Del: "Delete",
         Win: "OS",
         Menu: "ContextMenu",
-        App1s: "ContextMenu",
+        Apps: "ContextMenu",
         Scroll: "ScrollLock",
         MozPrintableKey: "Unidentified"
     },
@@ -7959,9 +7960,9 @@ function(e, t, n) {
     },
     Qo = void 0,
     Jo = function(e) {
-        return "undefined" !== typeof MSApp1 && MSApp1.execUnsafeLocalFunction ?
+        return "undefined" !== typeof MSApp && MSApp.execUnsafeLocalFunction ?
         function(t, n, r, o) {
-            MSApp1.execUnsafeLocalFunction(function() {
+            MSApp.execUnsafeLocalFunction(function() {
                 return e(t, n)
             })
         }: e
@@ -8806,29 +8807,26 @@ function(e, t, n) {
             key: "render",
             value: function() {
                 return u.a.createElement("div", {
-                    className: "App1"
+                    className: "App"
                 },
                 u.a.createElement("div", {
-                    className: "App1-container"
+                    className: "App-container"
                 },
                 u.a.createElement("header", {
-                    className: "App1-header"
+                    className: "App-header"
                 },
                 u.a.createElement("img", {
                     src: s.a,
-                    className: "App1-logo",
+                    className: "App-logo",
                     alt: "logo"
-                })), 
-                u.a.createElement("div", {
-                    className: "App1-intro"
+                })), u.a.createElement("div", {
+                    className: "App-intro"
                 },
                 u.a.createElement("div", {
-                    className: "App1-intro-text"
+                    className: "App-intro-text"
                 },
-                u.a.createElement("p", null, "Do you have one of these pieces of crap and need to solve it in a hurry?"),
-                u.a.createElement("p", null, "Well, great news! Scan it here. Then, you can follow the Cube Solver to fix your cube!"))),
-                u.a.createElement(f.a, null), u.a.createElement("div", {
-                    className: "App1-camera-container"
+                u.a.createElement("p", null, "Do you have one of these pieces of crap and need to solve it in a hurry?"), u.a.createElement("p", null, "Well, great news! Go ahead and scan it here. Then, you can follow the instructions for the scanner and algorithm guide to fix your cube!"))), u.a.createElement(f.a, null), u.a.createElement("div", {
+                    className: "App-camera-container"
                 },
                 u.a.createElement(d.a, {
                     processColorData: this.processColorData
@@ -8845,7 +8843,7 @@ function(e, t, n) {
     t.a = b
 },
 function(e, t, n) {
-    e.exports = n.p + "static/static/media/logo.4bd204f81.svg"
+    e.exports = n.p + "static/media/logo.4bd204f8.svg"
 },
 function(e, t) {},
 function(e, t, n) {
@@ -8915,32 +8913,59 @@ function(e, t, n) {
         O(t, [{
             key: "render",
             value: function() {
-                return u.a.createElement("div", { className: "Instructions1" },
-                    u.a.createElement("h1", null, "0  Instructions"),
-                    u.a.createElement("p", null, "The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!"),
-                    u.a.createElement("p", null, "One of the biggest challenges in this project is color recognition. Figuring out what color a pixel is showing on your monitor is easy, because your computer has a digital model of it. But it's a little more tricky to read the input from a webcam to figure out what color is on a shiny sticker on a plastic cube. Every room has different lighting, stickers show glare if your monitor's brightness is too high, and so on. The best we can do is guess what color a sticker is. Of course, we can try to make our guesses really good."),
-                    u.a.createElement("p", null, "We wrote code to find the mean HSV and modal RGB from each sticker. We eyeballed the HSV and RGB values and found some thresholds that worked 95% of the time in 95% of lightings. Of course, we included a GUI to manually modify the colors on each cell of the cube. A 3D 'mirror' of the cube is shown on the same screen as the webcam's view. The colors on this mirror represent what will be stored internally, so the user can notice if it doesn't match up with the physical cube."),
-                    u.a.createElement("p", null, "In the aspect of magic cube solution, we choose two phase algorithm (also called kociemba algorithm). You can visit http://kociemba.org/cube.htm to learn more about the solution details."),
-                    u.a.createElement("p", null, "In conclusion, compared with other online magic cube solving web pages, our highlights are: Firstly, support multiple input modes: scanning, coloring and rotation sequence. Then, the demonstration process of magic cube solution supports the use of progress bar. Finally, offline saving is supported in the demonstration process of magic cube solution"),
-                u.a.createElement("h1", null, "1  Scanning & Algorithm Guide"),
-                u.a.createElement("p", null, "For example, it's not hard to imagine your cube expansion as shown in the following figure. At the same time, pay attention to the position between each center color block. Then aim one side of the cube at the camera instead of yourself. Scan with the camera in the following order: "),
-                u.a.createElement("h2", null, "FRONT->RIGHT->LEFT->TOP->BOTTOM->BACK."),
-                u.a.createElement(l.Container, null,
-                    u.a.createElement(l.Row, null,
-                    u.a.createElement(l.Col, { sm: 12, md: 2 }),
-                    u.a.createElement(l.Col, { sm: 12, md: 8 }, u.a.createElement("img", { className: "guide", src: c.a, alt: "scanning guide" }))/*,
-                u.a.createElement(l.Visible, { xs: !0, sm: !0 },
-                u.a.createElement(l.Col, { xs: 3, sm: 3 })),
-                u.a.createElement(l.Col, { xs: 6, sm: 6, md: 2 },
-                u.a.createElement("img", { className: "color", src: p.a, alt: "front" }),
-                u.a.createElement("img", { className: "color", src: x.a, alt: "front" }),
-                u.a.createElement("img", { className: "color", src: h.a, alt: "front" }),
-                u.a.createElement("img", { className: "color", src: v.a, alt: "front" }),
-                u.a.createElement("img", { className: "color", src: b.a, alt: "front" }),
-                u.a.createElement("img", { className: "color bottom-color", src: _.a, alt: "front" }))*/)),
-                u.a.createElement("h2", /*{
+                return u.a.createElement("div", {
+                    className: "Instructions"
+                },
+                u.a.createElement("h1", null, "Scanning Instructions"), u.a.createElement("p", null, "Make sure to scan the faces using the following convention."), u.a.createElement(l.Container, null, u.a.createElement(l.Row, null, u.a.createElement(l.Col, {
+                    sm: 12,
+                    md: 1
+                }), u.a.createElement(l.Col, {
+                    sm: 12,
+                    md: 7
+                },
+                u.a.createElement("img", {
+                    className: "guide",
+                    src: c.a,
+                    alt: "scanning guide"
+                })), u.a.createElement(l.Visible, {
+                    xs: !0,
+                    sm: !0
+                },
+                u.a.createElement(l.Col, {
+                    xs: 3,
+                    sm: 3
+                })), u.a.createElement(l.Col, {
+                    xs: 6,
+                    sm: 6,
+                    md: 2
+                },
+                u.a.createElement("img", {
+                    className: "color",
+                    src: p.a,
+                    alt: "front"
+                }), u.a.createElement("img", {
+                    className: "color",
+                    src: x.a,
+                    alt: "front"
+                }), u.a.createElement("img", {
+                    className: "color",
+                    src: h.a,
+                    alt: "front"
+                }), u.a.createElement("img", {
+                    className: "color",
+                    src: v.a,
+                    alt: "front"
+                }), u.a.createElement("img", {
+                    className: "color",
+                    src: b.a,
+                    alt: "front"
+                }), u.a.createElement("img", {
+                    className: "color bottom-color",
+                    src: _.a,
+                    alt: "front"
+                })))), u.a.createElement("p", {
                     className: "tip"
-                },*/null,
+                },
                 "Tip: if the scanner is having problems detecting the colors, try tilting the cube to get a different lighting."), u.a.createElement(l.Container, null, u.a.createElement(l.Row, null, u.a.createElement(l.Col, {
                     xs: 3,
                     sm: 3,
@@ -9985,28 +10010,28 @@ function(e, t, n) {
     t.default = v
 },
 function(e, t, n) {
-    e.exports = n.p + "static/static/media/guide.06af4a953.svg"
+    e.exports = n.p + "static/media/guide.06af4a95.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/front.e016f1f01.svg"
+    e.exports = n.p + "static/media/front.e016f1f0.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/left.8fb466831.svg"
+    e.exports = n.p + "static/media/left.8fb46683.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/right.95814fed1.svg"
+    e.exports = n.p + "static/media/right.95814fed.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/top.1e6ebcd91.svg"
+    e.exports = n.p + "static/media/top.1e6ebcd9.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/back.2c84a3e01.svg"
+    e.exports = n.p + "static/media/back.2c84a3e0.svg"
 },
 function(e, t, n) {
-    e.exports = n.p //+ "static/static/media/bottom.acbbbbdf1.svg"
+    e.exports = n.p + "static/media/bottom.acbbbbdf.svg"
 },
 function(e, t, n) {
-    e.exports = n.p + "static/static/media/tilt.f3a5d0f91.svg"
+    e.exports = n.p + "static/media/tilt.f3a5d0f9.svg"
 },
 function(e, t) {},
 function(e, t, n) {
@@ -10061,11 +10086,9 @@ function(e, t, n) {
             key: "render",
             value: function() {
                 return u.a.createElement("div", {
-                    className: "Instructions1"
+                    className: "Instructions"
                 },
-                /*u.a.createElement("h1", null, "Algorithm Guide"),*/
-                u.a.createElement("h2", null, "Here's how to follow standard Rubik's cube algorithm notation."),
-                u.a.createElement(l.Container, null, u.a.createElement(l.Row, null, u.a.createElement(l.Visible, {
+                u.a.createElement("h1", null, "Algorithm Guide"), u.a.createElement("p", null, "Here's how to follow standard Rubik's cube algorithm notation."), u.a.createElement(l.Container, null, u.a.createElement(l.Row, null, u.a.createElement(l.Visible, {
                     md: !0,
                     lg: !0,
                     xl: !0
@@ -10324,7 +10347,7 @@ function(e, t, n) {
                     key: e,
                     ref: "reticle-box-" + e
                 }));
-                return null, u.a.createElement("div", {
+                return u.a.createElement("div", {
                     className: "Camera"
                 },
                 this.state.webcamError ? u.a.createElement("div", {
@@ -15730,7 +15753,7 @@ function(e, t, n) {
                 bottomColorData: [],
                 backColorData: []
             },
-            n.sides = ["Front", "Left", "Right", "Top", "Bottom", "Back"],
+            n.sides = ["Front", "Right", "Left", "Top", "Bottom", "Back"],
             n.updateColors = n.updateColors.bind(n),
             n.updateSelectedFace = n.updateSelectedFace.bind(n),
             n
@@ -15795,7 +15818,7 @@ function(e, t, n) {
                     }))
                 }),
                 u.a.createElement("div", {
-                    className: "Rubiks-cube1"
+                    className: "Rubiks-cube"
                 },
                 t)
             }
@@ -15966,7 +15989,10 @@ function(e, t, n) {
                     marginLeft: "4px",
                     backgroundColor: e[this.props.color]
                 };
+                Rubiks_slot_id = (Rubiks_slot_id + 1) % 54;
                 return u.a.createElement("div", {
+                    id: Rubiks_slot_id.toString(),
+                    //onchange: alert(Rubiks_slot_id),
                     className: "Rubiks-slot",
                     style: t
                 })
@@ -15976,14 +16002,14 @@ function(e, t, n) {
     } (a.Component);
     t.a = s
 },
-function(e, t, n) {
+function (e, t, n) {
     "use strict";
     function r(e, t) {
-        if (! (e instanceof t)) throw new TypeError("Cannot call a class as a function")
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
     }
     function o(e, t) {
         if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-        return ! t || "object" !== typeof t && "function" !== typeof t ? e: t
+        return !t || "object" !== typeof t && "function" !== typeof t ? e : t
     }
     function i(e, t) {
         if ("function" !== typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
@@ -16004,7 +16030,7 @@ function(e, t, n) {
     c = n.n(s),
     f = n(314),
     p = (n.n(f),
-    function() {
+    function () {
         function e(e, t) {
             for (var n = 0; n < t.length; n++) {
                 var r = t[n];
@@ -16014,13 +16040,13 @@ function(e, t, n) {
                 Object.defineProperty(e, r.key, r)
             }
         }
-        return function(t, n, r) {
+        return function (t, n, r) {
             return n && e(t.prototype, n),
             r && e(t, r),
             t
         }
-    } ()),
-    d = function(e) {
+    }()),
+    d = function (e) {
         function t(e) {
             r(this, t);
             var n = o(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -16035,7 +16061,7 @@ function(e, t, n) {
         return i(t, e),
         p(t, [{
             key: "loadCubeData",
-            value: function(e) {
+            value: function (e) {
                 var t = this.cubeDataToString(e);
                 this.setState({
                     cubeData: e
@@ -16056,15 +16082,15 @@ function(e, t, n) {
         },
         {
             key: "requestSolution",
-            value: function(e) {
+            value: function (e) {
                 return c.a.initSolver(),
                 e.solve()
             }
         },
         {
             key: "cubeDataToString",
-            value: function(e) {
-                for (var t = {
+            value: function (e) {
+                /*for (var t = {
                     r: "R",
                     o: "L",
                     y: "D",
@@ -16073,12 +16099,13 @@ function(e, t, n) {
                     w: "U"
                 },
                 n = "", r = ["top", "right", "front", "bottom", "left", "back"], o = 0; o < r.length; o++) for (var i = r[o], a = e[i], u = 0; u < 3; u++) for (var l = 0; l < 3; l++) n += t[a[u][l]];
-                return n
+                return n*/
+                return null
             }
         },
         {
             key: "render",
-            value: function() {
+            value: function () {
                 return null; /*u.a.createElement("div", {
                     className: "RubiksSolver"
                 },
@@ -16101,7 +16128,7 @@ function(e, t, n) {
             }
         }]),
         t
-    } (a.Component);
+    }(a.Component);
     t.a = d
 },
 function (e, t) { },
@@ -16599,11 +16626,13 @@ function(e, t, n) {
         s(t, [{
             key: "render",
             value: function() {
-                return u.a.createElement("div", { className: "Instructions1"},
-                u.a.createElement("h1", null, "2  Cube Solver Demo"),
-                u.a.createElement("p", null, "After reading the above introduction, do you have any idea to try it yourself? Here we provide a demo, let's try to sovle a cube with cube solver!. If you don't have a solid cube that can be used to break up, it doesn't matter. You can try to click the button \"Random\". The cube on the right will be randomly scramble. Then click the button \"Solve\" and wait a moment, a solution progress bar will appear. Follow the progress bar to restore step by step, and you will fix your cube! Don't forget the cube on the right is 3D and rotatable, press and drag the left mouse button to try."),
-                u.a.createElement("p", null, "When you have a solid cube, you can follow the following process: Step 1, scan all sides of the cube in the order of scanning through webcam. Step 2, click the button \"Draw\" to map the six scanned faces to the Rubik's cube expansion map on the left, because the color of the scanning will be incorrect, you can correct it manually in this step. Step 3, click the button \"Solve\", and follow the progress bar to restore step by step, as mentioned before. We will verify your input before we solve the cube. If it is not solvable, we will give a prompt: please check your input."))
-                /*u.a.createElement("p", null, "Made with \u2665 by ", u.a.createElement("a", { href: "https://peterlee.tech" },"Peter"), "."))*/
+                return u.a.createElement("div", {
+                    className: "Footer"
+                },
+                u.a.createElement("p", null, "Made with \u2665 by ", u.a.createElement("a", {
+                    href: "https://peterlee.tech"
+                },
+                "Peter"), "."))
             }
         }]),
         t
@@ -16643,7 +16672,7 @@ function(e, t, n) {
                 })
             }) : o(e)
         }).catch(function() {
-            console.log("No internet connection found. App1 is running in offline mode.")
+            console.log("No internet connection found. App is running in offline mode.")
         })
     }
     t.a = r;

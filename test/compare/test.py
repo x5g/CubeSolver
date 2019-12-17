@@ -203,20 +203,20 @@ for i in range (1000): # Abscissa assignment
 plt.figure(figsize=[20,5],dpi= 400)
 
 # Broken line diagram
-plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
-plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
-plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
-plt.plot(x, y_LayerFirst, 'black', label='LayerFirst')
-plt.plot(x, y_CFOP, 'purple', label='CFOP')
-plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
+# plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
+# plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
+# plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
+# plt.plot(x, y_LayerFirst, 'black', label='LayerFirst')
+# plt.plot(x, y_CFOP, 'purple', label='CFOP')
+# plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
 
 # Scatter diagram
-# plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
-# plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
-# plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
-# plt.scatter(x, y_LayerFirst, marker = '.',color = 'black', s = 15 ,label = 'LayerFirst')
-# plt.scatter(x, y_CFOP, marker = '.', color = 'purple', s = 15, label = 'CFOP')
-# plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
+plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
+plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
+plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
+plt.scatter(x, y_LayerFirst, marker = '.',color = 'black', s = 15 ,label = 'LayerFirst')
+plt.scatter(x, y_CFOP, marker = '.', color = 'purple', s = 15, label = 'CFOP')
+plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
 
 # 第一种计数模式下的标题
 # plt.title('Comparision of O-Kociemba(18,5), O-Kociemba(20,2), DeepCubeA, LayerFirst, CFOP and Kociemba in Counting Mode 1')
@@ -291,16 +291,16 @@ for i in range (1000): # Abscissa assignment
 plt.figure(figsize=[20,5],dpi= 400)
 
 # Broken line diagram
-plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
-plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
-plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
-plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
+# plt.plot(x, y_OKociemba2, 'blue', label='O-Kociemba(18,5)')
+# plt.plot(x, y_OKociemba, 'red', label='O-Kociemba(20,2)')
+# plt.plot(x, y_DeepCubeA, 'green', label='DeepCubeA')
+# plt.plot(x, y_Kociemba, 'orange', label='Kociemba')
 
 # Scatter diagram
-# plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
-# plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
-# plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
-# plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
+plt.scatter(x, y_OKociemba2, marker = '.', color = 'blue', s = 15, label = 'O-Kociemba(18,5)')
+plt.scatter(x, y_OKociemba, marker = '.',color = 'red', s = 15 ,label = 'O-Kociemba(20,2)')
+plt.scatter(x, y_DeepCubeA, marker = '.', color = 'green', s = 15, label = 'DeepCubeA')
+plt.scatter(x, y_Kociemba, marker = '.',color = 'orange', s = 15 ,label = 'Kociemba')
 
 
 # 第一种计数模式下的标题

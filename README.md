@@ -3,7 +3,7 @@
 ## Instructions
 The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!
 
-Here we provide a [video](https://www.bilibili.com/video/av76684072?zw) to introduce the capabilities of Cube Solver. 
+Here we provide a [video](https://www.bilibili.com/video/av77761128) to introduce the capabilities of Cube Solver. 
 
 In conclusion, compared with other online Rubik's cube solving web pages, our highlights are: 
 
@@ -42,7 +42,7 @@ then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver
 
 ## Special Description
 1. The DeepCube in this project is the API of the original website called because our server memory is not large enough.
-2. The full DeepCube project is in [DeepCube](https://github.com/x5g/DeepCube), another open source project of my GitHub.
+2. The full DeepCube project is in [DeepCube](https://github.com/x5g/DeepCube-and-DeepCubePlus), another open source project of my GitHub.
 
 
 

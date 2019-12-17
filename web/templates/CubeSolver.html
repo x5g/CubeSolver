@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/css?family=Neucha|Patrick+Hand+SC" rel="stylesheet" />
     <link rel="shortcut icon" href="{% static '/favicon.ico' %}" />
-    <link href="{% static 'static/css/main.ce70e69d.css' %}" rel="stylesheet" />
-    <link href="{% static 'static/css/main.ce70e69d1.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/main.ce70e69d.css' %}" rel="stylesheet" />
 
 
     <title>Cube Solver</title>
@@ -29,7 +28,6 @@
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/setStep.js' %}"></script>
 
- 
 
     <script type="text/javascript" src="{% static 'js/jquery.qrcode.min.js' %}"></script>
 
@@ -116,7 +114,7 @@
             <div class="App1">
                 <div class="App1-container">
                     <header class="App1-header">
-                        <img src="{% static 'static/media/logo.4bd204f81.svg' %}" class="App1-logo" alt="logo" />
+                        <img src="{% static 'media/logo.4bd204f81.svg' %}" class="App1-logo" alt="logo" />
                     </header>
                     <div class="App1-intro">
                         <div class="App1-intro-text" style="width:100%">
@@ -145,21 +143,21 @@
                         <p>Through our research, we have realized the functions that the existing software or web pages do not have. For players, we can provide clear guidance on the process of restoring the cube. Here we provide a video to introduce the capabilities of Cube Solver.</p>
 
                         <!--临时加个标签-->
-                        <a style="color:white" href="https://www.bilibili.com/video/av77761128/">CubeSolverIntroductionsVideo</a><br /><br />
+                        <!--<a style="color:white" href="https://www.bilibili.com/video/av77761128/">CubeSolverIntroductionsVideo</a><br /><br />-->
                         <!--介绍视频插入在这里-->
                         <!--bilibili加速版-->
                         <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77761128&cid=133031269&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                         <br /><br />-->
                         <!--bilibili无加速版-->
-                        <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77772638&cid=133033482&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-                        <br /><br />-->
+                        <iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77772638&cid=133033482&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        <br /><br />
                         <!--本地视频 加速版-->
                         <!--<video width="800" height="500" controls="controls">
-                            <source src="{% static 'static/media/CubeSolverIntroductionsVideo.mp4' %}" type="video/mp4" />
+                            <source src="{% static 'media/CubeSolverIntroductionsVideo.mp4' %}" type="video/mp4" />
                         </video><br /><br />-->
                         <!-- 本地视频 无加速版-->
                         <!--<video width="800" height="500" controls="controls">
-                            <source src="{% static 'static/media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
+                            <source src="{% static 'media/CubeSolverIntroductionsVideoWithoutSpeed.mp4' %}" type="video/mp4" />
                         </video><br /><br />-->
 
                         <h1>1  Scanning &amp; Algorithm Guide</h1>
@@ -223,7 +221,7 @@
                             <div style="margin-left: -15px; margin-right: -15px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal;">
                                 <div style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;"></div>
                                 <div style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 15px; padding-right: 15px; width: 100%; overflow: hidden; flex: 0 0 33.3333%; max-width: 33.3333%; margin-left: 0%; right: auto; left: auto;">
-                                    <img src="{% static 'static/media/tilt.f3a5d0f91.svg' %}" alt="tilt">
+                                    <img src="{% static 'media/tilt.f3a5d0f91.svg' %}" alt="tilt">
                                 </div>
                                 <div style="display: table; clear: both;">
                                     <span style="display: none;">&nbsp;</span>
@@ -284,7 +282,7 @@
             </div>
         </div>
         <div id="root"></div>
-        <script type="text/javascript" src="{% static 'static/js/main.e8816c68.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.e8816c68.js' %}"></script>
 
 
         <div class=wrap>
@@ -1183,23 +1181,23 @@
                 <h2>3.1  Color Recognition</h2>
                 <p>One of the biggest challenges of this project is color recognition. The computer has a digital model, it is easy to find out the color of pixels displayed on the display, but it is difficult to read the input of the camera to find out the color distribution of the cube. Because cube surface will reflect light, considering the illumination, if the brightness is too high, cube surface will show glare, so we can guess the color. We choose to recognize colors by converting RGB to HSV.</p>
                 <p>First, RGB to HSV:</p>
-                <img style="width: 70%" src="{% static 'static/media/rgb2hsv.png' %}" alt="rgb2hsv" /><br /><br />
+                <img style="width: 70%" src="{% static 'media/rgb2hsv.png' %}" alt="rgb2hsv" /><br /><br />
                 <p>Then, HSV to Colors:</p>
-                <img style="width: 40%;" src="{% static 'static/media/hsv2colors.png' %}" alt="hsv2colors" /><br /><br />
+                <img style="width: 40%;" src="{% static 'media/hsv2colors.png' %}" alt="hsv2colors" /><br /><br />
                 <h2>3.2  Check Rubik's Cube</h2>
                 <p>One thing we can be sure of is that unchecked input of the Rubik's cube may not be solved. In order to avoid user's wrong input, we need to design an algorithm to check whether the input is solvable. This part uses test cases to drive development. First, write the test input, and then look for projects on GitHub that pass all the test cases. After our test, many verification modules only verify the number of six colors, rather than really verify whether the user input is legal. There is an error state input, which can not be excluded by ordinary verification module: only exchange the center block color of any two faces.</p>
-                <img style="width:30%" src="{% static 'static/media/wrongstate.png' %}" alt="wrongstate" /><br /><br />
+                <img style="width:30%" src="{% static 'media/wrongstate.png' %}" alt="wrongstate" /><br /><br />
                 <p>This state is obviously wrong input, but many verification modules still pass the verification and give it to the background algorithm. The background algorithm can also generate the so-called restore solution sequence U D R2 L2 U D' R2 L2 D2, but there is no effective solution in fact.</p>
-                <img style="width: 60%" src="{% static 'static/media/wrongsolution2.png' %}" alt="wrongsoluton" /><br /><br />
+                <img style="width: 60%" src="{% static 'media/wrongsolution2.png' %}" alt="wrongsoluton" /><br /><br />
                 <h2>3.3  API of O-Kociemba Algorithm</h2>
                 <p>Here is a diagram to illustrate the architecture design of Cube Solver.</p>
-                <img style="width:50%" src="{% static 'static/media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
+                <img style="width:50%" src="{% static 'media/architectureDesign.png' %}" alt="architectureDesign" /><br /><br />
                 <p>In the aspect of Rubik's cube solution, we choose the Optimized Kociemba Algorithm (<a href="http://kociemba.org/cube.htm" style="color:white">Kociemba Algorithm</a> also called Two Phase Algorithm).</p>
                 <p>The names of the facelet positions of the cube in the Optimized Kociemba Algorithm:</p>
-                <img style="width:30%" src="{% static 'static/media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
+                <img style="width:30%" src="{% static 'media/carbon-8.png' %}" alt="codefacelet" /><br /><br />
                 <p>A cube definition string "UBL..." means for example: In position U1 we have the U-color, in position U2 we have the B-color, in position U3 we have the L color etc. according to the order U1, U2, U3, U4, U5, U6, U7, U8, U9, R1, R2, R3, R4, R5, R6, R7, R8, R9, F1, F2, F3, F4, F5, F6, F7, F8, F9, D1, D2, D3, D4, D5, D6, D7, D8, D9, L1, L2, L3, L4, L5, L6, L7, L8, L9, B1, B2, B3, B4, B5, B6, B7, B8, B9 of the enum constants.</p>
                 <p>The API code to call the solve Rubik's cube algorithm in this HTML file is:</p>
-                <img style="width:50%" src="{% static 'static/media/carbon-12.png' %}" alt="codeapi" /><br /><br />
+                <img style="width:50%" src="{% static 'media/carbon-12.png' %}" alt="codeapi" /><br /><br />
                 <p>And we provide the API interface of the solution. (1) Request address: https://czx.ac.cn/solver. (2) Request method: get. Input parameter: state. (3) Return format is JSON, where "move" is the solution sequence of Rubik's cube. Here is an example:</p>
                 <h3 style="font-family:'Neucha';color:#D4D0AB">get: https://czx.ac.cn/solver?state=LFBDUULLFULUFRRBLLUFRLFDLRRDBDBDBDBDBRFFLDRUBRUUUBRFDF<br />return: {"move": "L2 B2 U2 L2 D2 L2 R' D R' D2 L' F D2 U2 R' D2 R' D' F'"}</h3>
             </div>
@@ -1210,43 +1208,43 @@
                 <p>We provide an automatic test scheme demo: save the rotation sequence in the input file input.txt, and run the test file automatedTest.py for testing. You can find automatedTest.py and a demo of input.txt from the "test" folder in our GitHub. Here is a test video to see the test process and effect.</p>
 
                 <!--临时加个标签-->
-                <a style="color:white" href="https://www.bilibili.com/video/av77760268/">CubeSolverAutomatedTestVideo</a>
+                <!--<a style="color:white" href="https://www.bilibili.com/video/av77760268/">CubeSolverAutomatedTestVideo</a>-->
                 <!--自动化测试视频插入在这里-->
-                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760268&cid=133030912&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-                <br /><br />-->
+                <iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760268&cid=133030912&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <br /><br />
                 <!--本地视频-->
                 <!--<video width="800" height="450" controls="controls">
-                    <source src="{% static 'static/media/CubeSolverAutomatedTestVideo.mp4' %}" type="video/mp4" />
+                    <source src="{% static 'media/CubeSolverAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
                 <h2>4.2  Other Test</h2>
                 <p>Due to the limitation of technology, scanning input can not be tested automatically. We choose the two most common entity Rubik's cube on the market, the real color Rubik's cube and the sticker Rubik's cube. After testing in different light, the success rate of real color cube is higher than that of sticker cube. This is related to our HSV identification interval design.</p>
-                <img style="width: 20%" src="{% static 'static/media/twocubes.png' %}" alt="twocubes" /><br /><br />
+                <img style="width: 20%" src="{% static 'media/twocubes.png' %}" alt="twocubes" /><br /><br />
 
                 <h2>4.3  Compare O-Kociemba with other algorithms for solving Rubik's cube</h2>
                 <p>We compare the O-Kociemba with other algorithms for solving Rubik's cube (including O-Kociemba with different parameters, DeepCubeA, LayerFirst, CFOP, and Kociemba) in the number of output steps based on the same input. There are 1000 sets of the input in the experiment, and the experimental results show in two tables and four figures.</p>
                 <p>We define two counting modes: mode 1 considers "D2" as one step, and mode 2 considers "D2" as two steps. </p>
-                <img style="width: 60%" src="{% static 'static/media/twomodes.png' %}" alt="twomodes.png" /><br /><br />
+                <img style="width: 60%" src="{% static 'media/twomodes.png' %}" alt="twomodes.png" /><br /><br />
                 <p>In counting mode 1: the curve in Figure 1 is the comparison of six algorithms, and Figure 2 is the curve with steps of 15-40 in the enlarged version of Figure 1. In counting mode 2: the curve in Figure 3 is the comparison of six algorithms, and Figure 4 is the curve with steps of 15-45 in the enlarged version of Figure 3. Table 1 is the detailed quantization data of six algorithms in two different counting modes.</p>
                 <p>It should be pointed out that the first parameter of O-Kociemba algorithm is the expected number of steps, and the second parameter is the limit time. Obviously, O-Kociemba can explore more solution states when the time limit is larger. And, whether it is O-Kociemba(18,5) or O-Kociemba(20,2), the actual steps are less than other algorithms in most cases. Although we can see from table 1 that O-Kociemba(18,5) and O-Kociemba(20,2) are not as good as DeepCubeA algorithm in counting mode 2, the counting mode defined in mode 2 is obviously not suitable for real users to solve the cube. Therefore, count mode 1 is the user's actual experience standard. Thus, considering the effect of user experience, we choose O-Kociemba(20,2) as our Rubik's cube solution algorithm.</p>
 
-                <img style="width: 90%" src="{% static 'static/media/mode1_6.png' %}" alt="mode1_6.png" /><br /><br />
-                <img style="width: 90%" src="{% static 'static/media/mode1_4.png' %}" alt="mode1_4.png" /><br /><br />
-                <img style="width: 90%" src="{% static 'static/media/mode2_6.png' %}" alt="mode2_6.png" /><br /><br />
-                <img style="width: 90%" src="{% static 'static/media/mode2_4.png' %}" alt="mode2_4.png" /><br /><br />
-                <img style="width:60%" src="{% static 'static/media/compareResultTable.png' %}" alt="compareResultTable" /><br /><br />
+                <img style="width: 90%" src="{% static 'media/mode1_6.png' %}" alt="mode1_6.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'media/mode1_4.png' %}" alt="mode1_4.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'media/mode2_6.png' %}" alt="mode2_6.png" /><br /><br />
+                <img style="width: 90%" src="{% static 'media/mode2_4.png' %}" alt="mode2_4.png" /><br /><br />
+                <img style="width:60%" src="{% static 'media/compareResultTable.png' %}" alt="compareResultTable" /><br /><br />
 
                 <p>In particular, we provide the comparison method and python file of O-Kociemba(20,2) and DeepCubeA, you can find compareCubeSolverAndDeepCubeA.py, drawResult.py, result.xls and result.png from the "test" folder in our GitHub. Here is a demo test video about comparing OKociemba(20,2) with DeepCubeA in counting mode 1, and the detailed testing process can be accessed <a href="CubeSolverTest" style="color:white">here</a>.</p>
 
 
                 <!--临时加个标签-->
-                <a style="color:white" href="https://www.bilibili.com/video/av77760383/">CompareCubeSovlerAndDeepCubeAAutomatedTestVideo</a>
+                <!--<a style="color:white" href="https://www.bilibili.com/video/av77760383/">CompareCubeSovlerAndDeepCubeAAutomatedTestVideo</a>-->
                 <!--自动化对比测试视频插入在这里-->
-                <!--<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760383&cid=133031093&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-                <br /><br />-->
+                <iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=77760383&cid=133031093&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <br /><br />
                 <!--本地视频-->
                 <!--<video width="800" height="450" controls="controls">
-                    <source src="{% static 'static/media/CompareCubeSovlerAndDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
+                    <source src="{% static 'media/CompareCubeSovlerAndDeepCubeAAutomatedTestVideo.mp4' %}" type="video/mp4" />
                 </video>-->
 
             </div>
