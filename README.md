@@ -16,8 +16,9 @@ You can experience the fun of cube solver by yourself. The demo website is [Cube
 
 ## Code Files Description
 1. web: Cube Solver full runnable files
-2. src: source file .zip of each module in Cube Solver
+2. src: source file *.zip of each module in Cube Solver
 3. test: test files and test results in Cube Solver
+4. others: other files, including project opening report, concluding report.
 
 ## Usage
 This project needs Python 3.7, Django 2 and other necessary modules in requirements.txt. You can enter the follow codes:
