@@ -1,5 +1,5 @@
 # Cube Solver
-![image](./web/static/media/logo.4bd204f82.svg)
+![image](web/static/media/logo.4bd204f82.svg)
 ## Instructions
 The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!
 
@@ -23,9 +23,9 @@ You can experience the fun of cube solver by yourself. The demo website is [Cube
 ## Usage
 This project needs Python 3.7, Django 2 and other necessary modules in requirements.txt. You can enter the follow codes:
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 cd web
-python3 manage.py runserver
+python manage.py runserver
 ```
 then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver.
 
