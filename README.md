@@ -1,5 +1,5 @@
 # Cube Solver
-![image](web/static/media/logo.4bd204f82.svg)
+![image](./web/static/media/logo.4bd204f82.svg)
 ## Instructions
 The idea is simple: you mix up a Rubik's cube. You show the cube to your computer's webcam. Some magic happens, and your cube appears onscreen. Then the cube begins to solve itself, and all you have to do is follow along and you will have solved your cube!
 
