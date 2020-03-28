@@ -23,9 +23,9 @@ You can experience the fun of cube solver by yourself. The demo website is [Cube
 ## Usage
 This project needs Python 3.7, Django 2 and other necessary modules in requirements.txt. You can enter the follow codes:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 cd web
-python manage.py runserver
+python3 manage.py runserver
 ```
 then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver.
 
