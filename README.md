@@ -47,4 +47,4 @@ then visit http://127.0.0.1:8000/cubesolver to experience the fun of Cube Solver
 
 
 
-Made by GZY, CZX, WW
+Made by CZX, GZY, WW
