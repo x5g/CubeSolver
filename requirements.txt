@@ -1,2 +1,2 @@
-Django==2.2.7
+Django==2.2.22
 numpy==1.17.3
